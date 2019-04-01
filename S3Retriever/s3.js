@@ -37,8 +37,12 @@ var file = s3.getObject(
               if (err) {
                   console.log(err);
               } else {
-                  var extractedData = result;
-                  console.log(result.toString('utf8').split("\u0001"))
+                  var dataArray = result.toString('utf8').split('\n')
+                  for (i = 0; i < dataArray.length; i++) {
+                    dataArray[i] = dataArray[i].split('\u0001')
+                    console.log(dataArray[i])
+                  }
+                  //console.log(dataArray);
               }
       });
     }
