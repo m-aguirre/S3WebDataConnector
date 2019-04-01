@@ -24,6 +24,8 @@ s3.listObjects(bucketParams, function(err, data) {
   }
 });
 
+var dataOutput = []
+
 var file = s3.getObject(
   { Bucket: 'jumpshot-data-samples',
     Key: 'insights-stable-v2-20190302/1800flowers.com/2014/01/02/part-00000-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz'
@@ -37,14 +39,56 @@ var file = s3.getObject(
               if (err) {
                   console.log(err);
               } else {
-                  var dataArray = result.toString('utf8').split('\n')
+                  var schema = generateSchema();
+                  dataOutput.push(schema);
+                  var dataArray = result.toString('utf8').split('\n');
                   for (i = 0; i < dataArray.length; i++) {
-                    dataArray[i] = dataArray[i].split('\u0001')
-                    console.log(dataArray[i])
+                    dataArray[i] = dataArray[i].split('\u0001');
+                    //console.log(dataArray[i]);
+                    if (dataArray[i][0] === '') {
+                      continue;
+                    } else {
+                      dataOutput.push(dataArray[i]);
+                    }
                   }
                   //console.log(dataArray);
+              }
+              for (i = 0; i < dataOutput.length; i++) {
+                console.log(dataOutput[i]);
               }
       });
     }
   }
 );
+
+/*
+Hardcoded schema for temporary POC use
+*/
+var generateSchema = function() {
+
+  schema = ['date',
+  'unk',
+  'guid',
+  'domain',
+  'page_type',
+  'default?',
+  'url',
+  'unk2',
+  'device_type',
+  'city',
+  'state',
+  'zip',
+  'country',
+  'gender',
+  'age_range',
+  'browser',
+  'unk3',
+  'change_type',
+  'unk4' ];
+
+  return schema;
+}
+
+var getWDCSchema = function() {
+
+}
