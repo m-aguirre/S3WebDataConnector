@@ -1,14 +1,11 @@
 require('dotenv').config({path: '../.env'});
 var AWS = require('aws-sdk');
 AWS.config.update({region: process.env.aws_region})
-var gunzip = require('gunzip-file');
-var credentials = process.env
-const {gzip, ungzip} = require('node-gzip');
-var decompress = require('decompress');
-
 var Buffer = require('buffer').Buffer;
 var zlib = require('zlib');
-const fs = require('fs');
+
+var credentials = process.env
+
 // Create S3 service object
 s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
@@ -36,30 +33,14 @@ var file = s3.getObject(
     } else {
       console.log('Data Retrieved: ')
       console.log(data)
-    //  var f = gunzip(data.Body, 'extract.txt');
-    //  console.log(f)
-
-    zlib.gunzip(data.Body, function (err, result) {
-            if (err) {
-                console.log(err);
-            } else {
-                var extractedData = result;
-                console.log(result.toString('utf8').split("\u0001"))
-
-            }
-        });
-  //   gzip(data.Body)
-  // .then((compressed) => {
-  //   return ungzip(compressed);
-  // })
-  // .then((decompressed) => {
-  //   console.log(decompressed);
-  // });
-  //     var objectData = data.Body;
-  //     console.log(objectData.toString('asciii'));
-  //
-  //   //  const fileContents = fs.createReadStream(data.Body);
-  //   //  console.log(fileContents);
+      zlib.gunzip(data.Body, function (err, result) {
+              if (err) {
+                  console.log(err);
+              } else {
+                  var extractedData = result;
+                  console.log(result.toString('utf8').split("\u0001"))
+              }
+      });
     }
   }
 );
