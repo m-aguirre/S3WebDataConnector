@@ -48,8 +48,8 @@ myConnector.getData = function(table, doneCallback) {
     return fileNames
   }
     tableau.registerConnector(myConnector);
-  var retriever = require('../../S3Retriever/s3.js');
-  
+  var retriever = require('../S3Retriever/s3.js');
+
   getSchema = function() {
     retriever.getWDCSchema();
   }
