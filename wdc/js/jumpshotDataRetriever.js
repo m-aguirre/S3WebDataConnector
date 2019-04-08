@@ -1,4 +1,8 @@
 
+var x = require('../../S3Retriever/s3.js');
+var q = x.getWDCSchema();
+console.log(q);
+
 (function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
