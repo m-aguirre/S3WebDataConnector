@@ -24,7 +24,8 @@ s3.listObjects(bucketParams, function(err, data) {
   }
 });
 
-var dataOutput = []
+var dataOutput = [];
+var nCols = 0;
 
 var file = s3.getObject(
   { Bucket: 'jumpshot-data-samples',
@@ -45,6 +46,9 @@ var file = s3.getObject(
                   for (i = 0; i < dataArray.length; i++) {
                     dataArray[i] = dataArray[i].split('\u0001');
                     //console.log(dataArray[i]);
+                    if (nCols === 0) {
+                      nCols = dataArray[i].length;
+                    }
                     if (dataArray[i][0] === '') {
                       continue;
                     } else {
@@ -66,7 +70,7 @@ Hardcoded schema for temporary POC use
 */
 var generateSchema = function() {
 
-  schema = ['date',
+  var schema = ['date',
   'unk',
   'guid',
   'domain',
@@ -86,9 +90,26 @@ var generateSchema = function() {
   'change_type',
   'unk4' ];
 
+  schema = [];
+
+  for (i = 1; i <= nCols; i++) {
+    schema.push(i);
+  }
+
   return schema;
 }
 
-var getWDCSchema = function() {
 
-}
+module.exports = {
+  getWDCSchema: function () {
+    return 'this is a schema'
+  },
+
+  generateWDCSchema: function (nCols) {
+    schema = [];
+    for (i = 1; i <= nCols; i++) {
+      schema.push(i);
+    }
+    return schema;
+  }
+};
