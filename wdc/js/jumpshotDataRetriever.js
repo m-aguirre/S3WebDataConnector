@@ -1,5 +1,5 @@
-
-var x = require('../../S3Retriever/s3.js');
+import { getWDCSchema } from '../../S3Retriever/s3.js';
+//var x = require('../../S3Retriever/s3.js');
 var q = x.getWDCSchema();
 console.log(q);
 
@@ -52,11 +52,11 @@ myConnector.getData = function(table, doneCallback) {
     return fileNames
   }
     tableau.registerConnector(myConnector);
-  var retriever = require('../S3Retriever/s3.js');
-
-  getSchema = function() {
-    retriever.getWDCSchema();
-  }
+  // var retriever = require('../S3Retriever/s3.js');
+  //
+  // getSchema = function() {
+  //   retriever.getWDCSchema();
+  // }
 
 })();
 
