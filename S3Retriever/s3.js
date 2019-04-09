@@ -113,3 +113,7 @@ module.exports = {
     return schema;
   }
 };
+function getText() {
+  console.log('some text');
+  return 'abcde'
+}
