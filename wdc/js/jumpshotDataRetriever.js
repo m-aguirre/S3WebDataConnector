@@ -1,6 +1,6 @@
-import { getWDCSchema } from '../../S3Retriever/s3.js';
+//import { getWDCSchema } from '../../S3Retriever/s3.js';
 //var x = require('../../S3Retriever/s3.js');
-var q = x.getWDCSchema();
+var q = getWDCSchema();
 console.log(q);
 
 (function () {
