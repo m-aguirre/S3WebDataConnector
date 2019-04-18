@@ -65,56 +65,15 @@ var file = s3.getObject(
   }
 );
 
-/*
-Hardcoded schema for temporary POC use
-*/
-var generateSchema = function() {
-
-  var schema = ['date',
-  'unk',
-  'guid',
-  'domain',
-  'page_type',
-  'default?',
-  'url',
-  'unk2',
-  'device_type',
-  'city',
-  'state',
-  'zip',
-  'country',
-  'gender',
-  'age_range',
-  'browser',
-  'unk3',
-  'change_type',
-  'unk4' ];
-
-  schema = [];
-
-  for (i = 1; i <= nCols; i++) {
-    schema.push(i);
-  }
-
-  return schema;
-}
-
 
 module.exports = {
-  getWDCSchema: function () {
-    return 'this is a schema'
-  },
 
-  generateWDCSchema: function (nCols) {
+  generateSchema: function (nCols) {
     schema = [];
     for (i = 1; i <= nCols; i++) {
       schema.push(i);
     }
     return schema;
-  },
-
-  getText: function () {
-    console.log('some text');
-    return 'abcde'
   }
+
 };
