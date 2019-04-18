@@ -111,9 +111,10 @@ module.exports = {
       schema.push(i);
     }
     return schema;
+  },
+
+  getText: function () {
+    console.log('some text');
+    return 'abcde'
   }
 };
-function getText() {
-  console.log('some text');
-  return 'abcde'
-}
