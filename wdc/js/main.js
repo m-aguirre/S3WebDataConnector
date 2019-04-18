@@ -2,7 +2,7 @@
 var x = require('../../S3Retriever/s3.js');
 //var q = getWDCSchema();
 //console.log(q);
-var x = getText();
+var x = x.getText();
 console.log(x);
 
 (function () {
