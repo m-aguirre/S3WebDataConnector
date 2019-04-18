@@ -1,4 +1,4 @@
-//require('dotenv').config({path: '../.env'});
+require('dotenv').config({path: '../.env'});
 var AWS = require('aws-sdk');
 AWS.config.update({region: process.env.aws_region})
 var Buffer = require('buffer').Buffer;
@@ -20,7 +20,7 @@ s3.listObjects(bucketParams, function(err, data) {
   if (err) {
     console.log("Error ", err);
   } else {
-  //  console.log("Success", data);
+    console.log("Success", data);
   }
 });
 
@@ -57,9 +57,9 @@ var file = s3.getObject(
                   }
                   //console.log(dataArray);
               }
-              for (i = 0; i < dataOutput.length; i++) {
-                console.log(dataOutput[i]);
-              }
+              // for (i = 0; i < dataOutput.length; i++) {
+              //   console.log(dataOutput[i]);
+              // }
       });
     }
   }
