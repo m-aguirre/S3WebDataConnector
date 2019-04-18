@@ -1,5 +1,5 @@
 //import { getWDCSchema } from '../../S3Retriever/s3.js';
-//var x = require('../../S3Retriever/s3.js');
+var x = require('../../S3Retriever/s3.js');
 //var q = getWDCSchema();
 //console.log(q);
 var x = getText();
