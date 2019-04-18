@@ -11,6 +11,7 @@
   "devDependencies": {},
   "dependencies": {
     "aws-sdk": "^2.431.0",
+    "browserify": "^16.2.3",
     "decompress": "^4.2.0",
     "dotenv": "^7.0.0",
     "gunzip-file": "^0.1.1",
