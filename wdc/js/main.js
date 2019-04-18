@@ -78,3 +78,12 @@ $(document).ready(function() {
                           );
   });
 });
+
+$(document).ready(function () {
+  var bucketNames = ['jumpshot-data-samples'];
+  $.each(fileNames, function(index, name) {
+    $('#bucket-selector').append($("<option></option>")
+                            .attr("value", name)
+                            .text(name)
+                          );
+});
