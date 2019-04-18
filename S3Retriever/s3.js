@@ -15,14 +15,7 @@ var bucketParams = {
   Prefix: 'insights-stable-v2-20190302'
 };
 
-// Call S3 to obtain a list of the objects in the bucket
-s3.listObjects(bucketParams, function(err, data) {
-  if (err) {
-    console.log("Error ", err);
-  } else {
-    console.log("Success", data);
-  }
-});
+
 
 var dataOutput = [];
 var nCols = 0;
@@ -40,7 +33,7 @@ var file = s3.getObject(
               if (err) {
                   console.log(err);
               } else {
-                  var schema = generateSchema();
+                  var schema = module.exports.generateSchema();
                   dataOutput.push(schema);
                   var dataArray = result.toString('utf8').split('\n');
                   for (i = 0; i < dataArray.length; i++) {
@@ -74,6 +67,27 @@ module.exports = {
       schema.push(i);
     }
     return schema;
+  },
+
+  getS3FileList: function(s3) {
+    // Call S3 to obtain a list of the objects in the bucket
+    var records = [];
+    s3.listObjects(bucketParams, function(err, data) {
+      if (err) {
+        console.log("Error ", err);
+      } else {
+        //console.log("Success", data);
+        //temoporarily limited list of records - TODO remove later
+        for (var i = 0; i < 3; i++) {
+          records.push(data.Contents[i]);
+          console.log(records);
+        }
+      }
+    });
+    return records;
   }
 
 };
+
+var records = module.exports.getS3FileList(s3);
+//console.log(records);
