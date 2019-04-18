@@ -1,4 +1,4 @@
-require('dotenv').config({path: '../.env'});
+//require('dotenv').config({path: '../.env'});
 var AWS = require('aws-sdk');
 AWS.config.update({region: process.env.aws_region})
 var Buffer = require('buffer').Buffer;
