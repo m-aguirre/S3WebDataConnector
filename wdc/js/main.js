@@ -1,9 +1,6 @@
-//import { getWDCSchema } from '../../S3Retriever/s3.js';
-var x = require('../../S3Retriever/s3.js');
-//var q = getWDCSchema();
-//console.log(q);
-var x = x.getText();
-console.log(x);
+
+var S3 = require('../../S3Retriever/s3.js');
+
 
 (function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
@@ -69,6 +66,15 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+  var bucketNames = ['jumpshot-data-samples'];
+  $.each(bucketNames, function(index, name) {
+    $('#bucket-selector').append($("<option></option>")
+    .attr("value", name)
+    .text(name)
+  );
+});
+
 $(document).ready(function() {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
   $.each(fileNames, function(index, name) {
@@ -77,13 +83,4 @@ $(document).ready(function() {
                             .text(name)
                           );
   });
-});
-
-$(document).ready(function () {
-  var bucketNames = ['jumpshot-data-samples'];
-  $.each(fileNames, function(index, name) {
-    $('#bucket-selector').append($("<option></option>")
-                            .attr("value", name)
-                            .text(name)
-                          );
 });

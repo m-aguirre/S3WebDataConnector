@@ -104,6 +104,5 @@ module.exports = {
   }
 
 };
-
-var records = module.exports.getS3FileList(s3);
-console.log(records);
+//TODO add s3 param back into function call
+var records = module.exports.getS3FileList();
