@@ -1,10 +1,10 @@
-require('dotenv').config({path: '../.env'});
+//require('dotenv').config({path: '../.env'});
 var AWS = require('aws-sdk');
-AWS.config.update({region: process.env.aws_region})
+//AWS.config.update({region: process.env.aws_region})
 var Buffer = require('buffer').Buffer;
 var zlib = require('zlib');
 
-var credentials = process.env
+//var credentials = process.env
 
 // Create S3 service object
 s3 = new AWS.S3({apiVersion: '2006-03-01'});
