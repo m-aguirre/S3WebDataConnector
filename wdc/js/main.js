@@ -70,9 +70,10 @@ $(document).ready(function () {
   var bucketNames = ['jumpshot-data-samples'];
   $.each(bucketNames, function(index, name) {
     $('#bucket-selector').append($("<option></option>")
-    .attr("value", name)
-    .text(name)
-  );
+                         .attr("value", name)
+                         .text(name)
+                        );
+    });
 });
 
 $(document).ready(function() {
@@ -82,5 +83,5 @@ $(document).ready(function() {
                             .attr("value", name)
                             .text(name)
                           );
-  });
+    });
 });
