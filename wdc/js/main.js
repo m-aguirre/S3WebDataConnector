@@ -80,9 +80,9 @@ $(document).ready(function() {
   var files = S3.getS3FileList();
   console.log(files[1]);
   $.each(files, function(index, name) {
-    $('#file-selector').append($(structureBuilder.buildStructure(name)
+    $('#file-selector').append($(structureBuilder.buildStructure(name)));
                           //  .attr("value", name) "<option></option>"
                           //  .text(name)
-                          );
+
     });
 });
