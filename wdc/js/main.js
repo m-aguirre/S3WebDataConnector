@@ -65,27 +65,22 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-  var bucketNames = ['jumpshot-data-samples'];
-  $.each(bucketNames, function(index, name) {
-    $('#bucket-selector').append($("<option></option>")
-                         .attr("value", name)
-                         .text(name)
-                        );
-    });
-});
+// $(document).ready(function () {
+//   var bucketNames = ['jumpshot-data-samples'];
+//   $.each(bucketNames, function(index, name) {
+//     $('#bucket-selector').append($("<option></option>")
+//                          .attr("value", name)
+//                          .text(name)
+//                         );
+//     });
+// });
 
 $(document).ready(function() {
-  var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
   var files = S3.getS3FileList();
-  console.log("v2");
+  console.log("v3");
   $.each(files, function(index, file) {
     if (file.Size > 0) {
-      console.log(file.Size);
       $('#file-selector').append($(structureBuilder.buildStructure(file)));
-                          //  .attr("value", name) "<option></option>"
-                          //  .text(name)
-
-                        }
+      }
     });
 });

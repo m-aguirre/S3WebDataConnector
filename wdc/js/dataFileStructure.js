@@ -5,15 +5,24 @@ buildStructure: function (fileInfo) {
 
     var key = fileInfo.Key.split('/');
 
+    this.fileKey = fileInfo.Key;
     this.name = key[1];
     this.part = key[5].split('-')[1];
     this.lastModified = fileInfo.LastModified.split('T')[0];
 
     return (
             `<div class='file-info-tile'>
-            <label>Name: ${this.name}</label>
-            <label>Part: ${this.part}</label>
-            <label>Date: ${this.lastModified}</label>
+            <input type="checkbox" name="${this.fileKey}"
+            <label for="${this.fileKey}">
+              <div>
+                <ul>
+                  <li>Name: ${this.name}</li>
+                  <li>Part: ${this.part}</li>
+                  <li>Date: ${this.lastModified}</li>
+                </ul>
+              </div>
+            </label>
+
             </div>`
     )
 
