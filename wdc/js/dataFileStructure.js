@@ -1,7 +1,7 @@
 
 module.exports  = {
 
-Structure: function (fileInfo) {
+buildStructure: function (fileInfo) {
 
     var key = fileInfo.Key.split('/');
 
