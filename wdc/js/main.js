@@ -78,10 +78,10 @@ $(document).ready(function () {
 $(document).ready(function() {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
   var files = S3.getS3FileList();
-  console.log(files[1]);
+  console.log("v2");
   $.each(files, function(index, file) {
     if (file.Size > 0) {
-
+      console.log(file.Size);
       $('#file-selector').append($(structureBuilder.buildStructure(file)));
                           //  .attr("value", name) "<option></option>"
                           //  .text(name)
