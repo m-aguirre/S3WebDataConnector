@@ -10,10 +10,10 @@ buildStructure: function (fileInfo) {
     this.lastModified = fileInfo.LastModified.split('T')[0];
 
     return (
-            `<div>
-            <label>"Name: ${this.name}"</label>
-            <label>"Part: ${this.part}"</label>
-            <label>"Date: ${this.lastModified}"</label>
+            `<div class='file-info-tile'>
+            <label>Name: ${this.name}</label>
+            <label>Part: ${this.part}</label>
+            <label>Date: ${this.lastModified}</label>
             </div>`
     )
 
