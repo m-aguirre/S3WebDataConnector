@@ -1,6 +1,6 @@
-//require('dotenv').config({path: '../.env'});
+require('dotenv').config({path: '../.env'});
 var AWS = require('aws-sdk');
-//AWS.config.update({region: process.env.aws_region})
+AWS.config.update({region: process.env.aws_region})
 var Buffer = require('buffer').Buffer;
 var zlib = require('zlib');
 
@@ -9,11 +9,14 @@ var zlib = require('zlib');
 // Create S3 service object
 s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
+
+
 // Create the parameters for calling listObjects
 var bucketParams = {
   Bucket : 'jumpshot-data-samples',
   Prefix: 'insights-stable-v2-20190302'
 };
+
 
 var dataOutput = [];
 var nCols = 0;
