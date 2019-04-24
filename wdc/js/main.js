@@ -1,4 +1,5 @@
 var S3 = require('../../S3Retriever/s3.js');
+var structureBuilder = require('./dataFileStructure.js');
 
 (function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
@@ -78,10 +79,10 @@ $(document).ready(function() {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
   var files = S3.getS3FileList();
   console.log(files[1]);
-  $.each(fileNames, function(index, name) {
-    $('#file-selector').append($("<option></option>")
-                            .attr("value", name)
-                            .text(name)
+  $.each(files, function(index, name) {
+    $('#file-selector').append($(structureBuilder.buildStructure(name)
+                          //  .attr("value", name) "<option></option>"
+                          //  .text(name)
                           );
     });
 });
