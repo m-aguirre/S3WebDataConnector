@@ -3,9 +3,7 @@ var S3 = require('../../S3Retriever/s3.js');
 (function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
-
-    var myConnector = tableau.makeConnector();
-
+  var myConnector = tableau.makeConnector();
 
   myConnector.getSchema = function(schemaCallback) {
 
@@ -78,6 +76,8 @@ $(document).ready(function () {
 
 $(document).ready(function() {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
+  var files = S3.getS3FileList();
+  console.log(files[1]);
   $.each(fileNames, function(index, name) {
     $('#file-selector').append($("<option></option>")
                             .attr("value", name)
