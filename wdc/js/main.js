@@ -46,6 +46,8 @@ myConnector.getData = function(table, doneCallback) {
   };
 
   myConnector.getFileNames = function() {
+    var fileNames = S3.getS3FileList();
+    console.log(fileNames);
     return fileNames
   }
     tableau.registerConnector(myConnector);
