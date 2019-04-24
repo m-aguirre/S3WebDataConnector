@@ -9,14 +9,11 @@ var zlib = require('zlib');
 // Create S3 service object
 s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
-
-
 // Create the parameters for calling listObjects
 var bucketParams = {
   Bucket : 'jumpshot-data-samples',
   Prefix: 'insights-stable-v2-20190302'
 };
-
 
 var dataOutput = [];
 var nCols = 0;
@@ -58,7 +55,6 @@ var file = s3.getObject(
     }
   }
 );
-
 
 module.exports = {
 
