@@ -1,6 +1,4 @@
-
 var S3 = require('../../S3Retriever/s3.js');
-
 
 (function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
