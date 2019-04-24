@@ -79,10 +79,13 @@ $(document).ready(function() {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
   var files = S3.getS3FileList();
   console.log(files[1]);
-  $.each(files, function(index, name) {
-    $('#file-selector').append($(structureBuilder.buildStructure(name)));
+  $.each(files, function(index, file) {
+    if (file.Size > 0) {
+
+      $('#file-selector').append($(structureBuilder.buildStructure(file)));
                           //  .attr("value", name) "<option></option>"
                           //  .text(name)
 
+                        }
     });
 });
