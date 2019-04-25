@@ -84,6 +84,7 @@ $(document).ready(function() {
       }
     });
 });
+<<<<<<< HEAD
 
 $(document).ready(function() {
   $(".auth-form").submit(function(e) {
@@ -92,3 +93,5 @@ $(document).ready(function() {
     console.log($('#username-field').val())
   })
 });
+=======
+>>>>>>> 0038db9e91c635eee3460383634d67778c64058f
