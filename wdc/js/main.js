@@ -84,14 +84,12 @@ $(document).ready(function() {
       }
     });
 });
-<<<<<<< HEAD
 
 $(document).ready(function() {
   $(".auth-form").submit(function(e) {
     console.log('form submission')
     console.log(e)
     console.log($('#username-field').val())
+    return false;
   })
 });
-=======
->>>>>>> 0038db9e91c635eee3460383634d67778c64058f
