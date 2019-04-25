@@ -84,3 +84,11 @@ $(document).ready(function() {
       }
     });
 });
+
+$(document).ready(function() {
+  $(".auth-form").submit(function(e) {
+    console.log('form submission')
+    console.log(e)
+    console.log($('#username-field').val())
+  })
+});
