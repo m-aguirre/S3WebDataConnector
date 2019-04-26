@@ -7,7 +7,7 @@ var zlib = require('zlib');
 //var credentials = process.env
 
 // Create S3 service object
-s3 = new AWS.S3({apiVersion: '2006-03-01'});
+var s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
 // Create the parameters for calling listObjects
 var bucketParams = {
