@@ -4360,8 +4360,7 @@ type DotenvConfigOutput = {
   error?: Error
 }
 
-*/var fs=require('fs');var path=require('path');function log(message/*: string */){// console.log(`[dotenv][DEBUG] ${message}`)
-}var NEWLINE='\n';var RE_INI_KEY_VAL=/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/;var RE_NEWLINES=/\\n/g;// Parses src into an Object
+*/var fs=require('fs');var path=require('path');function log(message/*: string */){console.log("[dotenv][DEBUG] ".concat(message));}var NEWLINE='\n';var RE_INI_KEY_VAL=/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/;var RE_NEWLINES=/\\n/g;// Parses src into an Object
 function parse(src/*: string | Buffer */,options/*: ?DotenvParseOptions */)/*: DotenvParseOutput */{var debug=Boolean(options&&options.debug);var obj={};// convert Buffers before splitting into lines and processing
 src.toString().split(NEWLINE).forEach(function(line,idx){// matching "KEY' and 'VAL' in 'KEY=VAL'
 var keyValueArr=line.match(RE_INI_KEY_VAL);// matched?
@@ -4369,43 +4368,9 @@ if(keyValueArr!=null){var key=keyValueArr[1];// default undefined or missing val
 var val=keyValueArr[2]||'';var end=val.length-1;var isDoubleQuoted=val[0]==='"'&&val[end]==='"';var isSingleQuoted=val[0]==="'"&&val[end]==="'";// if single or double quoted, remove quotes
 if(isSingleQuoted||isDoubleQuoted){val=val.substring(1,end);// if double quoted, expand newlines
 if(isDoubleQuoted){val=val.replace(RE_NEWLINES,NEWLINE);}}else{// remove surrounding whitespace
-val=val.trim();}obj[key]=val;}else if(debug){// log(`did not match key and value when parsing line ${idx + 1}: ${line}`)
-}});return obj;}// // Populates process.env from .env file
-// function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ {
-//   let dotenvPath = path.resolve(process.cwd(), '.env')
-//   let encoding /*: string */ = 'utf8'
-//   let debug = false
-//
-//   if (options) {
-//     if (options.path != null) {
-//       dotenvPath = options.path
-//     }
-//     if (options.encoding != null) {
-//       encoding = options.encoding
-//     }
-//     if (options.debug != null) {
-//       debug = true
-//     }
-//   }
-//
-//   try {
-//     // specifying an encoding returns a string instead of a buffer
-//     const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
-//
-//     Object.keys(parsed).forEach(function (key) {
-//       if (!process.env.hasOwnProperty(key)) {
-//         process.env[key] = parsed[key]
-//       } else if (debug) {
-//         // log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
-//       }
-//     })
-//
-//     return { parsed }
-//   } catch (e) {
-//     return { error: e }
-//   }
-// }
-module.exports.config=config;module.exports.parse=parse;}).call(this,require('_process'));},{"_process":418,"fs":389,"path":416}],375:[function(require,module,exports){exports.read=function(buffer,offset,isLE,mLen,nBytes){var e,m;var eLen=nBytes*8-mLen-1;var eMax=(1<<eLen)-1;var eBias=eMax>>1;var nBits=-7;var i=isLE?nBytes-1:0;var d=isLE?-1:1;var s=buffer[offset+i];i+=d;e=s&(1<<-nBits)-1;s>>=-nBits;nBits+=eLen;for(;nBits>0;e=e*256+buffer[offset+i],i+=d,nBits-=8){}m=e&(1<<-nBits)-1;e>>=-nBits;nBits+=mLen;for(;nBits>0;m=m*256+buffer[offset+i],i+=d,nBits-=8){}if(e===0){e=1-eBias;}else if(e===eMax){return m?NaN:(s?-1:1)*Infinity;}else{m=m+Math.pow(2,mLen);e=e-eBias;}return(s?-1:1)*m*Math.pow(2,e-mLen);};exports.write=function(buffer,value,offset,isLE,mLen,nBytes){var e,m,c;var eLen=nBytes*8-mLen-1;var eMax=(1<<eLen)-1;var eBias=eMax>>1;var rt=mLen===23?Math.pow(2,-24)-Math.pow(2,-77):0;var i=isLE?0:nBytes-1;var d=isLE?1:-1;var s=value<0||value===0&&1/value<0?1:0;value=Math.abs(value);if(isNaN(value)||value===Infinity){m=isNaN(value)?1:0;e=eMax;}else{e=Math.floor(Math.log(value)/Math.LN2);if(value*(c=Math.pow(2,-e))<1){e--;c*=2;}if(e+eBias>=1){value+=rt/c;}else{value+=rt*Math.pow(2,1-eBias);}if(value*c>=2){e++;c/=2;}if(e+eBias>=eMax){m=0;e=eMax;}else if(e+eBias>=1){m=(value*c-1)*Math.pow(2,mLen);e=e+eBias;}else{m=value*Math.pow(2,eBias-1)*Math.pow(2,mLen);e=0;}}for(;mLen>=8;buffer[offset+i]=m&0xff,i+=d,m/=256,mLen-=8){}e=e<<mLen|m;eLen+=mLen;for(;eLen>0;buffer[offset+i]=e&0xff,i+=d,e/=256,eLen-=8){}buffer[offset+i-d]|=s*128;};},{}],376:[function(require,module,exports){var toString={}.toString;module.exports=Array.isArray||function(arr){return toString.call(arr)=='[object Array]';};},{}],377:[function(require,module,exports){(function(exports){"use strict";function isArray(obj){if(obj!==null){return Object.prototype.toString.call(obj)==="[object Array]";}else{return false;}}function isObject(obj){if(obj!==null){return Object.prototype.toString.call(obj)==="[object Object]";}else{return false;}}function strictDeepEqual(first,second){// Check the scalar case first.
+val=val.trim();}obj[key]=val;}else if(debug){log("did not match key and value when parsing line ".concat(idx+1,": ").concat(line));}});return obj;}// Populates process.env from .env file
+function config(options/*: ?DotenvConfigOptions */)/*: DotenvConfigOutput */{var dotenvPath=path.resolve(process.cwd(),'.env');var encoding/*: string */='utf8';var debug=false;if(options){if(options.path!=null){dotenvPath=options.path;}if(options.encoding!=null){encoding=options.encoding;}if(options.debug!=null){debug=true;}}try{// specifying an encoding returns a string instead of a buffer
+var parsed=parse(fs.readFileSync(dotenvPath,{encoding:encoding}),{debug:debug});Object.keys(parsed).forEach(function(key){if(!process.env.hasOwnProperty(key)){process.env[key]=parsed[key];}else if(debug){log("\"".concat(key,"\" is already defined in `process.env` and will not be overwritten"));}});return{parsed:parsed};}catch(e){return{error:e};}}module.exports.config=config;module.exports.parse=parse;}).call(this,require('_process'));},{"_process":418,"fs":389,"path":416}],375:[function(require,module,exports){exports.read=function(buffer,offset,isLE,mLen,nBytes){var e,m;var eLen=nBytes*8-mLen-1;var eMax=(1<<eLen)-1;var eBias=eMax>>1;var nBits=-7;var i=isLE?nBytes-1:0;var d=isLE?-1:1;var s=buffer[offset+i];i+=d;e=s&(1<<-nBits)-1;s>>=-nBits;nBits+=eLen;for(;nBits>0;e=e*256+buffer[offset+i],i+=d,nBits-=8){}m=e&(1<<-nBits)-1;e>>=-nBits;nBits+=mLen;for(;nBits>0;m=m*256+buffer[offset+i],i+=d,nBits-=8){}if(e===0){e=1-eBias;}else if(e===eMax){return m?NaN:(s?-1:1)*Infinity;}else{m=m+Math.pow(2,mLen);e=e-eBias;}return(s?-1:1)*m*Math.pow(2,e-mLen);};exports.write=function(buffer,value,offset,isLE,mLen,nBytes){var e,m,c;var eLen=nBytes*8-mLen-1;var eMax=(1<<eLen)-1;var eBias=eMax>>1;var rt=mLen===23?Math.pow(2,-24)-Math.pow(2,-77):0;var i=isLE?0:nBytes-1;var d=isLE?1:-1;var s=value<0||value===0&&1/value<0?1:0;value=Math.abs(value);if(isNaN(value)||value===Infinity){m=isNaN(value)?1:0;e=eMax;}else{e=Math.floor(Math.log(value)/Math.LN2);if(value*(c=Math.pow(2,-e))<1){e--;c*=2;}if(e+eBias>=1){value+=rt/c;}else{value+=rt*Math.pow(2,1-eBias);}if(value*c>=2){e++;c/=2;}if(e+eBias>=eMax){m=0;e=eMax;}else if(e+eBias>=1){m=(value*c-1)*Math.pow(2,mLen);e=e+eBias;}else{m=value*Math.pow(2,eBias-1)*Math.pow(2,mLen);e=0;}}for(;mLen>=8;buffer[offset+i]=m&0xff,i+=d,m/=256,mLen-=8){}e=e<<mLen|m;eLen+=mLen;for(;eLen>0;buffer[offset+i]=e&0xff,i+=d,e/=256,eLen-=8){}buffer[offset+i-d]|=s*128;};},{}],376:[function(require,module,exports){var toString={}.toString;module.exports=Array.isArray||function(arr){return toString.call(arr)=='[object Array]';};},{}],377:[function(require,module,exports){(function(exports){"use strict";function isArray(obj){if(obj!==null){return Object.prototype.toString.call(obj)==="[object Array]";}else{return false;}}function isObject(obj){if(obj!==null){return Object.prototype.toString.call(obj)==="[object Object]";}else{return false;}}function strictDeepEqual(first,second){// Check the scalar case first.
 if(first===second){return true;}// Check if they are the same type.
 var firstType=Object.prototype.toString.call(first);if(firstType!==Object.prototype.toString.call(second)){return false;}// We know that first and second have the same type so we can just check the
 // first type from now on.
@@ -4913,8 +4878,7 @@ if(isNull(value))return ctx.stylize('null','null');}function formatError(value){
 function isArray(ar){return Array.isArray(ar);}exports.isArray=isArray;function isBoolean(arg){return typeof arg==='boolean';}exports.isBoolean=isBoolean;function isNull(arg){return arg===null;}exports.isNull=isNull;function isNullOrUndefined(arg){return arg==null;}exports.isNullOrUndefined=isNullOrUndefined;function isNumber(arg){return typeof arg==='number';}exports.isNumber=isNumber;function isString(arg){return typeof arg==='string';}exports.isString=isString;function isSymbol(arg){return _typeof(arg)==='symbol';}exports.isSymbol=isSymbol;function isUndefined(arg){return arg===void 0;}exports.isUndefined=isUndefined;function isRegExp(re){return isObject(re)&&objectToString(re)==='[object RegExp]';}exports.isRegExp=isRegExp;function isObject(arg){return _typeof(arg)==='object'&&arg!==null;}exports.isObject=isObject;function isDate(d){return isObject(d)&&objectToString(d)==='[object Date]';}exports.isDate=isDate;function isError(e){return isObject(e)&&(objectToString(e)==='[object Error]'||e instanceof Error);}exports.isError=isError;function isFunction(arg){return typeof arg==='function';}exports.isFunction=isFunction;function isPrimitive(arg){return arg===null||typeof arg==='boolean'||typeof arg==='number'||typeof arg==='string'||_typeof(arg)==='symbol'||// ES6 symbol
 typeof arg==='undefined';}exports.isPrimitive=isPrimitive;exports.isBuffer=require('./support/isBuffer');function objectToString(o){return Object.prototype.toString.call(o);}function pad(n){return n<10?'0'+n.toString(10):n.toString(10);}var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];// 26 Feb 16:19:34
 function timestamp(){var d=new Date();var time=[pad(d.getHours()),pad(d.getMinutes()),pad(d.getSeconds())].join(':');return[d.getDate(),months[d.getMonth()],time].join(' ');}// log is just a thin wrapper to console.log that prepends a timestamp
-exports.log=function(){// console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
-};/**
+exports.log=function(){console.log('%s - %s',timestamp(),exports.format.apply(exports,arguments));};/**
  * Inherit the prototype methods from one constructor into another.
  *
  * The Function.prototype.inherits from lang.js rewritten as a standalone
