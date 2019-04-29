@@ -91,5 +91,5 @@ $(document).ready(function() {
     console.log(e)
     console.log($('#username-field').val())
     return false;
-  })
+  });
 });
