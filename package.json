@@ -11,12 +11,19 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.4.3",
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3"
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "babel-loader": "^8.0.5",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "gulp": "^4.0.1",
+    "gulp-connect": "^5.7.0",
+    "vinyl-source-stream": "^2.0.0",
+    "webpack": "^4.30.0"
   },
   "dependencies": {
     "aws-sdk": "^2.431.0",
-    "browserify": "^16.2.3",
     "decompress": "^4.2.0",
     "dotenv": "^7.0.0",
     "gunzip-file": "^0.1.1",

@@ -1,0 +1,21 @@
+
+
+ul {
+  list-style: none;
+}
+
+.file-info-tile {
+  margin-top: 15px;
+  background-color: #EFEFEF;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.file-info-tile input {
+  margin: auto;
+  margin-left: 5%;
+  margin-right: 0;
+}
