@@ -102,6 +102,12 @@ module.exports = {
     return records;
   }
 
+
+
+
+
+
+
 };
 //TODO add s3 param back into function call
 var records = module.exports.getS3FileList();
@@ -157,7 +163,5 @@ class S3Connection {
 
     return records;
   }
-
-
 }
-export default S3Connection;
+// export default S3Connection;
