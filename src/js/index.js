@@ -1,6 +1,8 @@
 var S3 = require('../../S3Retriever/s3.js');
 var structureBuilder = require('./dataFileStructure.js');
 
+import S3Connection from '../../S3Retriever/s3.js';
+
 (function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
@@ -76,8 +78,22 @@ $(document).ready(function () {
 // });
 
 $(document).ready(function() {
-  var files = S3.getS3FileList();
-  console.log("v3");
+  var files = [ { Key:
+   'insights-stable-v2-20190302/1800flowers.com/2014/01/01/_SUCCESS',
+  LastModified: '2019-03-20T23:15:30.000Z',
+  Size: 0,
+  StorageClass: 'STANDARD' },
+{ Key:
+   'insights-stable-v2-20190302/1800flowers.com/2014/01/01/part-00000-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz',
+  LastModified: '2019-03-03T16:01:09.000Z',
+  Size: 2624,
+  StorageClass: 'STANDARD' },
+{ Key:
+   'insights-stable-v2-20190302/1800flowers.com/2014/01/01/part-00001-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz',
+  LastModified: '2019-03-03T16:01:09.000Z',
+  Size: 2516,
+  StorageClass: 'STANDARD' } ]
+  console.log("v4");
   $.each(files, function(index, file) {
     if (file.Size > 0) {
       $('#file-selector').append($(structureBuilder.buildStructure(file)));
@@ -87,11 +103,12 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $(".auth-form").submit(function(e) {
+    e.preventDefault();
     console.log('form submission')
     console.log(e)
     console.log($('#username-field').val())
 
-    //var s3 = new S3Connection($('#username-field').val(), $('#password-field').val())
+    var s3 = new S3Connection($('#username-field').val(), $('#password-field').val())
     console.log(s3.bucketParams)
     return false;
   });

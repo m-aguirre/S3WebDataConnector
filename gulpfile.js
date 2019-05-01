@@ -12,7 +12,7 @@ var gulp = require("gulp"),
 
 //Copy static files from html folder to build folder
 gulp.task("copyStaticFiles", function(){
-    return gulp.src("./src/html/*.*")
+    return gulp.src("./build/html/*.*")
     .pipe(gulp.dest("./build"));
 });
 

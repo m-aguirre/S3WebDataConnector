@@ -104,7 +104,7 @@ var file = s3.getObject(
 //
 // };
 //TODO add s3 param back into function call
-var records = module.exports.getS3FileList();
+//var records = module.exports.getS3FileList();
 
 
 class S3Connection {
@@ -119,7 +119,7 @@ class S3Connection {
       Bucket : 'jumpshot-data-samples',
       Prefix: 'insights-stable-v2-20190302'
     }
-    this.records = ['empty'];
+    this.records = [];
   }
 
   getS3FileList(s3) {
