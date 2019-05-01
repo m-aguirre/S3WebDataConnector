@@ -108,8 +108,11 @@ $(document).ready(function() {
     console.log(e)
     console.log($('#username-field').val())
 
-    var s3 = new S3Connection($('#username-field').val(), $('#password-field').val())
+    var s3 = new S3Connection($('#username-field').val(), $('#password-field').val());
+
     console.log(s3.bucketParams)
+    var f = s3.getS3FileList();
+    console.log(f)
     return false;
   });
 });
