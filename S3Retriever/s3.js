@@ -119,7 +119,7 @@ class S3Connection {
       Bucket : 'jumpshot-data-samples',
       Prefix: 'insights-stable-v2-20190302'
     }
-    this.records = [];
+    this.records = ['empty'];
   }
 
   getS3FileList(s3) {
