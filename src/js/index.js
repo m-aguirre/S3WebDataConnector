@@ -1,6 +1,7 @@
 var S3 = require('../../S3Retriever/s3.js');
 var structureBuilder = require('./dataFileStructure.js');
 
+import axios from 'axios';
 import S3Connection from '../../S3Retriever/s3.js';
 
 (function () {
@@ -107,12 +108,18 @@ $(document).ready(function() {
     console.log('form submission')
     console.log(e)
     console.log($('#username-field').val())
-
-    var s3 = new S3Connection($('#username-field').val(), $('#password-field').val());
-
-    console.log(s3.bucketParams)
-    var f = s3.getS3FileList();
-    console.log(f)
+    let user = $('#username-field').val();
+    let pass = $('#password-field').val();
+    //var s3 = new S3Connection($('#username-field').val(), $('#password-field').val());
+    axios.get('localhost:3000/auth', {
+      params: {
+        un : user,
+        pw: pass
+      }
+    });
+    //console.log(s3.bucketParams)
+    //var f = s3.getS3FileList();
+    //console.log(f)
     return false;
   });
 });
