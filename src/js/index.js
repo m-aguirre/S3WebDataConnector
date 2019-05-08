@@ -111,7 +111,7 @@ $(document).ready(function() {
     let user = $('#username-field').val();
     let pass = $('#password-field').val();
     //var s3 = new S3Connection($('#username-field').val(), $('#password-field').val());
-    axios.get('https://jumpshot-proxy.herokuapp.com/api', {
+    axios.get('https://jumpshot-proxy.herokuapp.com/auth', {
       params: {
         un : user,
         pw: pass
