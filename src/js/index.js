@@ -94,7 +94,7 @@ $(document).ready(function() {
   LastModified: '2019-03-03T16:01:09.000Z',
   Size: 2516,
   StorageClass: 'STANDARD' } ]
-  console.log("v4");
+  console.log("v5");
   $.each(files, function(index, file) {
     if (file.Size > 0) {
       $('#file-selector').append($(structureBuilder.buildStructure(file)));
