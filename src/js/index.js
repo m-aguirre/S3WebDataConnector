@@ -116,6 +116,10 @@ $(document).ready(function() {
         un : user,
         pw: pass
       }
+    }).then(function (res) {
+      console.log(res)
+    }).catch(function (err) {
+      console.log(err)
     });
     //console.log(s3.bucketParams)
     //var f = s3.getS3FileList();
