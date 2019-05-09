@@ -61,10 +61,26 @@ myConnector.getData = function(table, doneCallback) {
 
 })();
 
+//TODO add catch for when zero elements are checked
 $(document).ready(function () {
+  var fileNameToRequest = [];
     $("#submitButton").click(function () {
-        tableau.connectionName = "JS Data Feed";
-        tableau.submit();
+      $('.file-info-tile').each(function(index) {
+
+
+        $(this).find('input[type=checkbox]').each(function(x) {
+          console.log(x)
+          console.log($(this).is(':checked'))
+          console.log($(this).attr('name'))
+
+          if ($(this).is(':checked')) {
+            fileNameToRequest.push($(this).attr('name'));
+            break;
+          }
+        })
+      });
+        // tableau.connectionName = "JS Data Feed";
+        // tableau.submit();
     });
 });
 
