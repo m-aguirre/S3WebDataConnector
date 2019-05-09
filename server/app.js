@@ -66,5 +66,11 @@ app.get('/auth', (req, res) => {
   //res.send(records)
 });
 
+app.get('/getfiles', (req, res) => {
+  console.log('getFile called')
+
+  console.log(req.query.fileName)
+});
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

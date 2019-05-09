@@ -75,12 +75,20 @@ $(document).ready(function () {
 
           if ($(this).is(':checked')) {
             fileNameToRequest.push($(this).attr('name'));
-            break;
           }
         })
       });
         // tableau.connectionName = "JS Data Feed";
         // tableau.submit();
+        axios.get('https://jumpshot-proxy.herokuapp.com/getFiles', {
+          params: {
+            fileName : fileNameToRequest[0]
+          }
+        }).then(function (res) {
+
+        }).catch(function (err) {
+          console.log(err)
+        });
     });
 });
 
