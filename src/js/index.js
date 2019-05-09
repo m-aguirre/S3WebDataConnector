@@ -78,7 +78,9 @@ $(document).ready(function () {
 //     });
 // });
 
+//TEMP FUNCTION FOR TESTING, REMOVE LATER
 $(document).ready(function() {
+  $('.selection-pane').toggle();
   var files = [ { Key:
    'insights-stable-v2-20190302/1800flowers.com/2014/01/01/_SUCCESS',
   LastModified: '2019-03-20T23:15:30.000Z',
@@ -95,11 +97,11 @@ $(document).ready(function() {
   Size: 2516,
   StorageClass: 'STANDARD' } ]
   console.log("v6");
-  // $.each(files, function(index, file) {
-  //   if (file.Size > 0) {
-  //     $('#file-selector').append($(structureBuilder.buildStructure(file)));
-  //     }
-  //   });
+  $.each(files, function(index, file) {
+    if (file.Size > 0) {
+      $('#file-selector').append($(structureBuilder.buildStructure(file)));
+      }
+    });
 });
 
 $(document).ready(function() {
@@ -134,4 +136,12 @@ $(document).ready(function() {
     //console.log(f)
     return false;
   });
+
+
+
+  $('.file-info-tile').click(function(){
+    $(":checkbox:eq(0)", this).attr("checked", "checked");
+  });
+
+
 });
