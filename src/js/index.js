@@ -95,11 +95,11 @@ $(document).ready(function() {
   Size: 2516,
   StorageClass: 'STANDARD' } ]
   console.log("v6");
-  $.each(files, function(index, file) {
-    if (file.Size > 0) {
-      $('#file-selector').append($(structureBuilder.buildStructure(file)));
-      }
-    });
+  // $.each(files, function(index, file) {
+  //   if (file.Size > 0) {
+  //     $('#file-selector').append($(structureBuilder.buildStructure(file)));
+  //     }
+  //   });
 });
 
 $(document).ready(function() {
@@ -118,7 +118,10 @@ $(document).ready(function() {
       }
     }).then(function (res) {
       console.log(res)
+      console.log(res.data)
+      $('.selection-pane').toggle();
       $.each(res.data, function(index, file) {
+        console.log(file);
         if (file.Size > 0) {
           $('#file-selector').append($(structureBuilder.buildStructure(file)));
           }
