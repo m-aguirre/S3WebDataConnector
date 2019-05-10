@@ -111,10 +111,11 @@ class S3Connection {
   constructor(accessKey, secretKey) {
     const AWS = require('aws-sdk');
     AWS.config = new AWS.Config();
-    AWS.config.accessKeyId = accessKey;
-    AWS.config.secretAccessKey = secretKey;
+    // AWS.config.accessKeyId = accessKey;
+    // AWS.config.secretAccessKey = secretKey;
     AWS.config.region = "eu-west-1";
-    this.s3 = new AWS.S3({apiVersion: '2006-03-01'});
+    // this.s3 = new AWS.S3({apiVersion: '2006-03-01'});
+    this.s3 = new AWS.S3({apiVersion: '2006-03-01', accessKeyId: accessKey, secretAccessKey: secretKey});
     this.bucketParams = {
       Bucket : 'jumpshot-data-samples',
       Prefix: 'insights-stable-v2-20190302'
@@ -123,7 +124,7 @@ class S3Connection {
   }
 
   //TODO possibly remove s3 param
-  getS3FileList(s3) {
+  getS3FileList() {
     // Call S3 to obtain a list of the objects in the bucket
     this.s3.listObjects(this.bucketParams, function(err, data) {
       if (err) {
@@ -158,4 +159,4 @@ class S3Connection {
     return this.records;
   }
 }
- export default S3Connection;
+export default S3Connection;

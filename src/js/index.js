@@ -65,6 +65,7 @@ myConnector.getData = function(table, doneCallback) {
 $(document).ready(function () {
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
+      console.log(creds);
       $('.file-info-tile').each(function(index) {
 
 
@@ -80,9 +81,13 @@ $(document).ready(function () {
       });
         // tableau.connectionName = "JS Data Feed";
         // tableau.submit();
-        axios.get('https://jumpshot-proxy.herokuapp.com/getFiles', {
+        var s3 = new S3Connection(creds.key, creds.secret)
+        axios.get('https://jumpshot-proxy.herokuapp.com/getfiles', {
           params: {
-            fileName : fileNameToRequest[0]
+            s3: s3,
+            fileName: fileNameToRequest[0],
+            un: creds.key,
+            pw: creds.secret
           }
         }).then(function (res) {
 
@@ -128,6 +133,11 @@ $(document).ready(function() {
     });
 });
 
+var creds = {
+  key: '',
+  secret: ''
+}
+
 $(document).ready(function() {
   $(".auth-form").submit(function(e) {
     e.preventDefault();
@@ -145,7 +155,10 @@ $(document).ready(function() {
     }).then(function (res) {
       console.log(res)
       console.log(res.data)
-      $('.selection-pane').toggle();
+      creds.key = user;
+      creds.secret = pass;
+
+    //  $('.selection-pane').toggle();
       $.each(res.data, function(index, file) {
         console.log(file);
         if (file.Size > 0) {
