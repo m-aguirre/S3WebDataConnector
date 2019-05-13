@@ -18,6 +18,7 @@ var bucketParams = {
 var dataOutput = [];
 var nCols = 0;
 
+console.log('requesting...')
 var file = s3.getObject(
   { Bucket: 'jumpshot-data-samples',
     Key: 'insights-stable-v2-20190302/1800flowers.com/2014/01/02/part-00000-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz'
@@ -27,12 +28,13 @@ var file = s3.getObject(
     } else {
       console.log('Data Retrieved: ')
       console.log(data)
+      console.log(data.Body)
       zlib.gunzip(data.Body, function (err, result) {
               if (err) {
                   console.log(err);
               } else {
-                  var schema = module.exports.generateSchema();
-                  dataOutput.push(schema);
+                //  var schema = module.exports.generateSchema();
+                //  dataOutput.push(schema);
                   var dataArray = result.toString('utf8').split('\n');
                   for (i = 0; i < dataArray.length; i++) {
                     dataArray[i] = dataArray[i].split('\u0001');

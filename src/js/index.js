@@ -3,6 +3,7 @@ var structureBuilder = require('./dataFileStructure.js');
 
 import axios from 'axios';
 import S3Connection from '../../S3Retriever/s3.js';
+import Decompressor from './decompressor.js';
 
 (function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
@@ -94,7 +95,10 @@ $(document).ready(function () {
             pw: creds.secret
           }
         }).then(function (res) {
-
+          console.log(res)
+          const decompressor = new Decompressor(res.data);
+          let unzippedFile = decompressor.decompress();
+          console.log(unzippedFile[0]);
         }).catch(function (err) {
           console.log(err)
         });
@@ -111,31 +115,31 @@ $(document).ready(function () {
 //     });
 // });
 
-//TEMP FUNCTION FOR TESTING, REMOVE LATER
-$(document).ready(function() {
-  $('.selection-pane').toggle();
-  var files = [ { Key:
-   'insights-stable-v2-20190302/1800flowers.com/2014/01/01/_SUCCESS',
-  LastModified: '2019-03-20T23:15:30.000Z',
-  Size: 0,
-  StorageClass: 'STANDARD' },
-{ Key:
-   'insights-stable-v2-20190302/1800flowers.com/2014/01/01/part-00000-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz',
-  LastModified: '2019-03-03T16:01:09.000Z',
-  Size: 2624,
-  StorageClass: 'STANDARD' },
-{ Key:
-   'insights-stable-v2-20190302/1800flowers.com/2014/01/01/part-00001-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz',
-  LastModified: '2019-03-03T16:01:09.000Z',
-  Size: 2516,
-  StorageClass: 'STANDARD' } ]
-  console.log("v6");
-  $.each(files, function(index, file) {
-    if (file.Size > 0) {
-      $('#file-selector').append($(structureBuilder.buildStructure(file)));
-      }
-    });
-});
+// //TEMP FUNCTION FOR TESTING, REMOVE LATER
+// $(document).ready(function() {
+//   $('.selection-pane').toggle();
+//   var files = [ { Key:
+//    'insights-stable-v2-20190302/1800flowers.com/2014/01/01/_SUCCESS',
+//   LastModified: '2019-03-20T23:15:30.000Z',
+//   Size: 0,
+//   StorageClass: 'STANDARD' },
+// { Key:
+//    'insights-stable-v2-20190302/1800flowers.com/2014/01/01/part-00000-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz',
+//   LastModified: '2019-03-03T16:01:09.000Z',
+//   Size: 2624,
+//   StorageClass: 'STANDARD' },
+// { Key:
+//    'insights-stable-v2-20190302/1800flowers.com/2014/01/01/part-00001-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz',
+//   LastModified: '2019-03-03T16:01:09.000Z',
+//   Size: 2516,
+//   StorageClass: 'STANDARD' } ]
+//   console.log("v6");
+//   $.each(files, function(index, file) {
+//     if (file.Size > 0) {
+//       $('#file-selector').append($(structureBuilder.buildStructure(file)));
+//       }
+//     });
+// });
 
 var creds = {
   key: '',
@@ -162,7 +166,7 @@ $(document).ready(function() {
       creds.key = user;
       creds.secret = pass;
 
-    //  $('.selection-pane').toggle();
+      $('.selection-pane').toggle();
       $.each(res.data, function(index, file) {
         console.log(file);
         if (file.Size > 0) {

@@ -1,7 +1,7 @@
 var zlib = require('zlib');
 
 
-// 
+//
 // zlib.gunzip(data.Body, function (err, result) {
 //         if (err) {
 //             console.log(err);
@@ -35,14 +35,18 @@ class Decompressor {
   }
 
   decompress() {
+    console.log("UNZIPPING")
+    console.log(this.data);
     zlib.gunzip(this.data.Body, function (err, result) {
             if (err) {
+                console.log('FAIL');
                 console.log(err);
             } else {
+                console.log('SUCCESS')
                 var dataArray = result.toString('utf8').split('\n');
                 for (i = 0; i < dataArray.length; i++) {
                   dataArray[i] = dataArray[i].split('\u0001');
-                  //console.log(dataArray[i]);
+                  console.log(dataArray[i]);
                   if (dataArray[i][0] === '') {
                     continue;
                   } else {
@@ -55,6 +59,7 @@ class Decompressor {
             //   console.log(dataOutput[i]);
             // }
     });
+    return this.unzippedFile;
   }
 }
 
