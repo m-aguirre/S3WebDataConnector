@@ -81,6 +81,10 @@ $(document).ready(function () {
       });
         // tableau.connectionName = "JS Data Feed";
         // tableau.submit();
+        /*
+        TODO s3 functionality is not passed to proxy server;
+          move proxy server logic into main repo after deployment
+        */
         var s3 = new S3Connection(creds.key, creds.secret)
         axios.get('https://jumpshot-proxy.herokuapp.com/getfiles', {
           params: {
