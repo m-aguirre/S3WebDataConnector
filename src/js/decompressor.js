@@ -1,4 +1,4 @@
-var zlib = require('zlib');
+var zlib = require('browserify-zlib');
 
 
 //
