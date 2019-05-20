@@ -1,9 +1,10 @@
-var S3 = require('../../S3Retriever/s3.js');
-var structureBuilder = require('./dataFileStructure.js');
-
 import axios from 'axios';
 import S3Connection from '../../S3Retriever/s3.js';
 import Decompressor from './decompressor.js';
+
+var S3 = require('../../S3Retriever/s3.js');
+var structureBuilder = require('./dataFileStructure.js');
+
 
 (function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
@@ -95,10 +96,11 @@ $(document).ready(function () {
             pw: creds.secret
           }
         }).then(function (res) {
-          console.log(res)
-          const decompressor = new Decompressor(res.data);
-          let unzippedFile = decompressor.decompress();
-          console.log(unzippedFile[0]);
+          console.log('Response Data: ')
+          console.log(res.data)
+          //const decompressor = new Decompressor(res.data);
+          //let unzippedFile = decompressor.decompress();
+          //console.log(unzippedFile[0]);
         }).catch(function (err) {
           console.log(err)
         });
