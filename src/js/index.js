@@ -1,7 +1,8 @@
 import axios from 'axios';
 import S3Connection from '../../S3Retriever/s3.js';
 import Decompressor from './decompressor.js';
-var Promise = require('promise');
+//var Promise = require('promise');
+var Promise = require('es6-promise').Promise;
 var S3 = require('../../S3Retriever/s3.js');
 var structureBuilder = require('./dataFileStructure.js');
 
