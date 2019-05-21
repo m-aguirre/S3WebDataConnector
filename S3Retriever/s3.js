@@ -1,6 +1,6 @@
-require('dotenv').config({path: '../.env'});
+//require('dotenv').config({path: '../.env'});
 var AWS = require('aws-sdk');
-AWS.config.update({region: process.env.aws_region})
+//AWS.config.update({region: process.env.aws_region})
 var Buffer = require('buffer').Buffer;
 var zlib = require('zlib');
 
@@ -18,45 +18,45 @@ var bucketParams = {
 var dataOutput = [];
 var nCols = 0;
 
-console.log('requesting...')
-var file = s3.getObject(
-  { Bucket: 'jumpshot-data-samples',
-    Key: 'insights-stable-v2-20190302/1800flowers.com/2014/01/02/part-00000-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz'
-}, function(err, data) {
-    if (err) {
-      console.log("Error ", err)
-    } else {
-      console.log('Data Retrieved: ')
-      console.log(data)
-      console.log(data.Body)
-      zlib.gunzip(data.Body, function (err, result) {
-              if (err) {
-                  console.log(err);
-              } else {
-                //  var schema = module.exports.generateSchema();
-                //  dataOutput.push(schema);
-                  var dataArray = result.toString('utf8').split('\n');
-                  for (i = 0; i < dataArray.length; i++) {
-                    dataArray[i] = dataArray[i].split('\u0001');
-                    //console.log(dataArray[i]);
-                    if (nCols === 0) {
-                      nCols = dataArray[i].length;
-                    }
-                    if (dataArray[i][0] === '') {
-                      continue;
-                    } else {
-                      dataOutput.push(dataArray[i]);
-                    }
-                  }
-                  //console.log(dataArray);
-              }
-              // for (i = 0; i < dataOutput.length; i++) {
-              //   console.log(dataOutput[i]);
-              // }
-      });
-    }
-  }
-);
+// console.log('requesting...')
+// var file = s3.getObject(
+//   { Bucket: 'jumpshot-data-samples',
+//     Key: 'insights-stable-v2-20190302/1800flowers.com/2014/01/02/part-00000-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz'
+// }, function(err, data) {
+//     if (err) {
+//       console.log("Error ", err)
+//     } else {
+//       console.log('Data Retrieved: ')
+//       console.log(data)
+//       console.log(data.Body)
+//       zlib.gunzip(data.Body, function (err, result) {
+//               if (err) {
+//                   console.log(err);
+//               } else {
+//                 //  var schema = module.exports.generateSchema();
+//                 //  dataOutput.push(schema);
+//                   var dataArray = result.toString('utf8').split('\n');
+//                   for (i = 0; i < dataArray.length; i++) {
+//                     dataArray[i] = dataArray[i].split('\u0001');
+//                     //console.log(dataArray[i]);
+//                     if (nCols === 0) {
+//                       nCols = dataArray[i].length;
+//                     }
+//                     if (dataArray[i][0] === '') {
+//                       continue;
+//                     } else {
+//                       dataOutput.push(dataArray[i]);
+//                     }
+//                   }
+//                   //console.log(dataArray);
+//               }
+//               // for (i = 0; i < dataOutput.length; i++) {
+//               //   console.log(dataOutput[i]);
+//               // }
+//       });
+//     }
+//   }
+// );
 
 // module.exports = {
 //
