@@ -91,17 +91,11 @@ const formatData = (data) => {
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
-  console.log('v6')
+  console.log('v7')
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
       $('.file-info-tile').each(function(index) {
-
-
         $(this).find('input[type=checkbox]').each(function(x) {
-          console.log(x)
-          console.log($(this).is(':checked'))
-          console.log($(this).attr('name'))
-
           if ($(this).is(':checked')) {
             fileNameToRequest.push($(this).attr('name'));
           }
@@ -136,43 +130,6 @@ $(document).ready(function () {
     });
 });
 
-
-
-// $(document).ready(function () {
-//   var bucketNames = ['jumpshot-data-samples'];
-//   $.each(bucketNames, function(index, name) {
-//     $('#bucket-selector').append($("<option></option>")
-//                          .attr("value", name)
-//                          .text(name)
-//                         );
-//     });
-// });
-
-// //TEMP FUNCTION FOR TESTING, REMOVE LATER
-// $(document).ready(function() {
-//   $('.selection-pane').toggle();
-//   var files = [ { Key:
-//    'insights-stable-v2-20190302/1800flowers.com/2014/01/01/_SUCCESS',
-//   LastModified: '2019-03-20T23:15:30.000Z',
-//   Size: 0,
-//   StorageClass: 'STANDARD' },
-// { Key:
-//    'insights-stable-v2-20190302/1800flowers.com/2014/01/01/part-00000-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz',
-//   LastModified: '2019-03-03T16:01:09.000Z',
-//   Size: 2624,
-//   StorageClass: 'STANDARD' },
-// { Key:
-//    'insights-stable-v2-20190302/1800flowers.com/2014/01/01/part-00001-2551eefb-78be-409d-a9f8-347e791cc0f5.c000.txt.gz',
-//   LastModified: '2019-03-03T16:01:09.000Z',
-//   Size: 2516,
-//   StorageClass: 'STANDARD' } ]
-//   console.log("v6");
-//   $.each(files, function(index, file) {
-//     if (file.Size > 0) {
-//       $('#file-selector').append($(structureBuilder.buildStructure(file)));
-//       }
-//     });
-// });
 
 var creds = {
   key: '',
@@ -211,7 +168,6 @@ $(document).ready(function() {
     //console.log(f)
     return false;
   });
-
 
 
   $('.file-info-tile').click(function(){
