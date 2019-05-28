@@ -17,26 +17,35 @@ var dataFromS3 = ['empty'];
 
   myConnector.getSchema = function(schemaCallback) {
 
-    var cols = [{
-      id: 'id',
-      dataType: tableau.dataTypeEnum.string
-    }, {
-      id: 'start',
-      alias: 'start-date',
-      dataType: tableau.dataTypeEnum.string
-    }, {
-      id: 'conversions',
-      alias: 'conversions',
-      dataType: tableau.dataTypeEnum.string
-    }, {
-      id: 'end',
-      alias: 'end-date',
-      dataType: tableau.dataTypeEnum.string
-    } , {
-      id: 'percent',
-      alias: 'percentage',
-      dataType: tableau.dataTypeEnum.string
-    }];
+    var cols = []
+      for (let i = 0; i < 19; i++) {
+        let obj = {
+          id: i.toString(),
+          dataType: tableau.dataTypeEnum.string
+        };
+        cols.push(obj)
+      }
+
+    // var cols = [{
+    //   id: 'id',
+    //   dataType: tableau.dataTypeEnum.string
+    // }, {
+    //   id: 'start',
+    //   alias: 'start-date',
+    //   dataType: tableau.dataTypeEnum.string
+    // }, {
+    //   id: 'conversions',
+    //   alias: 'conversions',
+    //   dataType: tableau.dataTypeEnum.string
+    // }, {
+    //   id: 'end',
+    //   alias: 'end-date',
+    //   dataType: tableau.dataTypeEnum.string
+    // } , {
+    //   id: 'percent',
+    //   alias: 'percentage',
+    //   dataType: tableau.dataTypeEnum.string
+    // }];
 
     var tableSchema = {
       id: 'feedPrototype',
@@ -48,7 +57,7 @@ var dataFromS3 = ['empty'];
   }
 
 myConnector.getData = function(table, doneCallback) {
-    var tableData = dataAsJson;
+    var tableData = dataFromS3;
      table.appendRows(tableData);
      doneCallback();
   };
@@ -82,7 +91,7 @@ const formatData = (data) => {
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
-  console.log('v4')
+  console.log('v5')
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
       console.log(creds);
