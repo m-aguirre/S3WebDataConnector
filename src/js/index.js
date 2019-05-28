@@ -54,7 +54,7 @@ percent: 1 } ];
   myConnector.getSchema = function(schemaCallback) {
 
     var cols = []
-      for (let i = 0; i < 19; i++) {
+      for (let i = 0; i < 5; i++) {
         let obj = {
           id: i.toString(),
           dataType: tableau.dataTypeEnum.string
@@ -127,7 +127,7 @@ const formatData = (data) => {
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
-  console.log('v10')
+  console.log('v1')
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
       $('.file-info-tile').each(function(index) {
