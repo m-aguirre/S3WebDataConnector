@@ -10,7 +10,7 @@ var structureBuilder = require('./dataFileStructure.js');
 var dataFromS3 = ['empty'];
 
 
-
+(function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
   var myConnector = tableau.makeConnector();
@@ -48,7 +48,7 @@ var dataFromS3 = ['empty'];
   }
 
 myConnector.getData = function(table, doneCallback) {
-    var tableData = dataFromS3;
+    var tableData = dataAsJson;
      table.appendRows(tableData);
      doneCallback();
   };
@@ -61,6 +61,7 @@ myConnector.getData = function(table, doneCallback) {
     return fileNames
   }
     tableau.registerConnector(myConnector);
+})();
 
 /*
 Formats data retrieved from S3 into JSON data that can be handled by tableau
@@ -81,7 +82,7 @@ const formatData = (data) => {
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
-  console.log('v3')
+  console.log('v4')
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
       console.log(creds);
