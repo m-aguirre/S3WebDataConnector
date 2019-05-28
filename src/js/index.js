@@ -9,68 +9,68 @@ var structureBuilder = require('./dataFileStructure.js');
 
 var dataFromS3 = ['empty'];
 
-
-(function () {
-  var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
-
-  var myConnector = tableau.makeConnector();
-
-  myConnector.getSchema = function(schemaCallback) {
-
-    // var cols = []
-    //   for (let i = 0; i < 19; i++) {
-    //     let obj = {
-    //       id: i.toString(),
-    //       dataType: tableau.dataTypeEnum.string
-    //     };
-    //     cols.push(obj)
-    //   }
-
-    var cols = [{
-      id: 'id',
-      dataType: tableau.dataTypeEnum.string
-    }, {
-      id: 'start',
-      alias: 'start-date',
-      dataType: tableau.dataTypeEnum.string
-    }, {
-      id: 'conversions',
-      alias: 'conversions',
-      dataType: tableau.dataTypeEnum.string
-    }, {
-      id: 'end',
-      alias: 'end-date',
-      dataType: tableau.dataTypeEnum.string
-    } , {
-      id: 'percent',
-      alias: 'percentage',
-      dataType: tableau.dataTypeEnum.string
-    }];
-
-    var tableSchema = {
-      id: 'feedPrototype',
-      alias: 'Jumpshot sample feed',
-      columns: cols
-    }
-
-    schemaCallback([tableSchema]);
-  }
-
-myConnector.getData = function(table, doneCallback) {
-    var tableData = dataFromS3;
-     table.appendRows(tableData);
-     doneCallback();
-  };
-
-
-  //TODO remove
-  myConnector.getFileNames = function() {
-    var fileNames = S3.getS3FileList();
-    console.log(fileNames);
-    return fileNames
-  }
-    tableau.registerConnector(myConnector);
-})();
+//
+// (function () {
+//   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
+//
+//   var myConnector = tableau.makeConnector();
+//
+//   myConnector.getSchema = function(schemaCallback) {
+//
+//     // var cols = []
+//     //   for (let i = 0; i < 19; i++) {
+//     //     let obj = {
+//     //       id: i.toString(),
+//     //       dataType: tableau.dataTypeEnum.string
+//     //     };
+//     //     cols.push(obj)
+//     //   }
+//
+//     var cols = [{
+//       id: 'id',
+//       dataType: tableau.dataTypeEnum.string
+//     }, {
+//       id: 'start',
+//       alias: 'start-date',
+//       dataType: tableau.dataTypeEnum.string
+//     }, {
+//       id: 'conversions',
+//       alias: 'conversions',
+//       dataType: tableau.dataTypeEnum.string
+//     }, {
+//       id: 'end',
+//       alias: 'end-date',
+//       dataType: tableau.dataTypeEnum.string
+//     } , {
+//       id: 'percent',
+//       alias: 'percentage',
+//       dataType: tableau.dataTypeEnum.string
+//     }];
+//
+//     var tableSchema = {
+//       id: 'feedPrototype',
+//       alias: 'Jumpshot sample feed',
+//       columns: cols
+//     }
+//
+//     schemaCallback([tableSchema]);
+//   }
+//
+// myConnector.getData = function(table, doneCallback) {
+//     var tableData = dataFromS3;
+//      table.appendRows(tableData);
+//      doneCallback();
+//   };
+//
+//
+//   //TODO remove
+//   myConnector.getFileNames = function() {
+//     var fileNames = S3.getS3FileList();
+//     console.log(fileNames);
+//     return fileNames
+//   }
+//     tableau.registerConnector(myConnector);
+// })();
 
 /*
 Formats data retrieved from S3 into JSON data that can be handled by tableau
@@ -91,7 +91,7 @@ const formatData = (data) => {
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
-  console.log('v7')
+  console.log('v8')
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
       $('.file-info-tile').each(function(index) {
@@ -119,6 +119,75 @@ $(document).ready(function () {
           console.log('Response Data: ')
           console.log(res.data)
           formatData(res.data);
+
+            var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
+
+            var myConnector = tableau.makeConnector();
+
+            myConnector.getSchema = function(schemaCallback) {
+
+              // var cols = []
+              //   for (let i = 0; i < 19; i++) {
+              //     let obj = {
+              //       id: i.toString(),
+              //       dataType: tableau.dataTypeEnum.string
+              //     };
+              //     cols.push(obj)
+              //   }
+
+              var cols = [{
+                id: 'id',
+                dataType: tableau.dataTypeEnum.string
+              }, {
+                id: 'start',
+                alias: 'start-date',
+                dataType: tableau.dataTypeEnum.string
+              }, {
+                id: 'conversions',
+                alias: 'conversions',
+                dataType: tableau.dataTypeEnum.string
+              }, {
+                id: 'end',
+                alias: 'end-date',
+                dataType: tableau.dataTypeEnum.string
+              } , {
+                id: 'percent',
+                alias: 'percentage',
+                dataType: tableau.dataTypeEnum.string
+              }];
+
+              var tableSchema = {
+                id: 'feedPrototype',
+                alias: 'Jumpshot sample feed',
+                columns: cols
+              }
+
+              schemaCallback([tableSchema]);
+            }
+
+          myConnector.getData = function(table, doneCallback) {
+              var tableData = dataFromS3;
+               table.appendRows(tableData);
+               doneCallback();
+            };
+
+
+            //TODO remove
+            myConnector.getFileNames = function() {
+              var fileNames = S3.getS3FileList();
+              console.log(fileNames);
+              return fileNames
+            }
+              tableau.registerConnector(myConnector);
+        
+
+
+
+
+
+
+
+
           tableau.connectionName = "Jumpshot Sample Feed";
           tableau.submit();
           //const decompressor = new Decompressor(res.data);
