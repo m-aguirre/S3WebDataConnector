@@ -17,35 +17,35 @@ var dataFromS3 = ['empty'];
 
   myConnector.getSchema = function(schemaCallback) {
 
-    var cols = []
-      for (let i = 0; i < 19; i++) {
-        let obj = {
-          id: i.toString(),
-          dataType: tableau.dataTypeEnum.string
-        };
-        cols.push(obj)
-      }
+    // var cols = []
+    //   for (let i = 0; i < 19; i++) {
+    //     let obj = {
+    //       id: i.toString(),
+    //       dataType: tableau.dataTypeEnum.string
+    //     };
+    //     cols.push(obj)
+    //   }
 
-    // var cols = [{
-    //   id: 'id',
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: 'start',
-    //   alias: 'start-date',
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: 'conversions',
-    //   alias: 'conversions',
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: 'end',
-    //   alias: 'end-date',
-    //   dataType: tableau.dataTypeEnum.string
-    // } , {
-    //   id: 'percent',
-    //   alias: 'percentage',
-    //   dataType: tableau.dataTypeEnum.string
-    // }];
+    var cols = [{
+      id: 'id',
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: 'start',
+      alias: 'start-date',
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: 'conversions',
+      alias: 'conversions',
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: 'end',
+      alias: 'end-date',
+      dataType: tableau.dataTypeEnum.string
+    } , {
+      id: 'percent',
+      alias: 'percentage',
+      dataType: tableau.dataTypeEnum.string
+    }];
 
     var tableSchema = {
       id: 'feedPrototype',
@@ -80,7 +80,7 @@ const formatData = (data) => {
   let dataCollection = []
   for (let i = 0; i < data.length; i++) {
     let obj = {}
-    for (let j = 0; j < data[i].length; j++) {
+    for (let j = 0; j < 5; j++) { //data[i].length
       obj[j.toString()] = data[i][j]
     }
     dataCollection.push(obj);
@@ -91,10 +91,9 @@ const formatData = (data) => {
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
-  console.log('v5')
+  console.log('v6')
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
-      console.log(creds);
       $('.file-info-tile').each(function(index) {
 
 
@@ -183,9 +182,6 @@ var creds = {
 $(document).ready(function() {
   $(".auth-form").submit(function(e) {
     e.preventDefault();
-    console.log('form submission')
-    console.log(e)
-    console.log($('#username-field').val())
     let user = $('#username-field').val();
     let pass = $('#password-field').val();
     //var s3 = new S3Connection($('#username-field').val(), $('#password-field').val());
