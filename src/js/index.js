@@ -7,8 +7,10 @@ require('es6-promise').polyfill();
 var S3 = require('../../S3Retriever/s3.js');
 var structureBuilder = require('./dataFileStructure.js');
 
+var dataFromS3 = ['empty'];
 
-(function () {
+
+
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
   var myConnector = tableau.makeConnector();
@@ -46,24 +48,21 @@ var structureBuilder = require('./dataFileStructure.js');
   }
 
 myConnector.getData = function(table, doneCallback) {
-    var tableData = dataAsJson;
+    var tableData = dataFromS3;
      table.appendRows(tableData);
      doneCallback();
   };
 
+
+  //TODO remove
   myConnector.getFileNames = function() {
     var fileNames = S3.getS3FileList();
     console.log(fileNames);
     return fileNames
   }
     tableau.registerConnector(myConnector);
-  // var retriever = require('../S3Retriever/s3.js');
-  //
-  // getSchema = function() {
-  //   retriever.getWDCSchema();
-  // }
 
-})();
+
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
@@ -100,6 +99,9 @@ $(document).ready(function () {
         }).then(function (res) {
           console.log('Response Data: ')
           console.log(res.data)
+          dataFromS3 = res.data;
+          tableau.connectionName = "Jumpshot Sample Feed";
+          tableau.submit();
           //const decompressor = new Decompressor(res.data);
           //let unzippedFile = decompressor.decompress();
           //console.log(unzippedFile[0]);
@@ -108,6 +110,8 @@ $(document).ready(function () {
         });
     });
 });
+
+
 
 // $(document).ready(function () {
 //   var bucketNames = ['jumpshot-data-samples'];
