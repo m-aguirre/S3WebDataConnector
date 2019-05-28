@@ -62,11 +62,26 @@ myConnector.getData = function(table, doneCallback) {
   }
     tableau.registerConnector(myConnector);
 
-
+/*
+Formats data retrieved from S3 into JSON data that can be handled by tableau
+@param array of arrays
+*/
+const formatData = (data) => {
+  let dataCollection = []
+  for (let i = 0; i < data.length; i++) {
+    let obj = {}
+    for (let j = 0; j < data[i].length; j++) {
+      obj[j.toString()] = data[i][j]
+    }
+    dataCollection.push(obj);
+  }
+  dataFromS3 = dataCollection;
+  console.log(dataFromS3);
+}
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
-  console.log('v2')
+  console.log('v3')
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
       console.log(creds);
@@ -100,7 +115,7 @@ $(document).ready(function () {
         }).then(function (res) {
           console.log('Response Data: ')
           console.log(res.data)
-          dataFromS3 = res.data;
+          formatData(res.data);
           tableau.connectionName = "Jumpshot Sample Feed";
           tableau.submit();
           //const decompressor = new Decompressor(res.data);
