@@ -66,6 +66,7 @@ myConnector.getData = function(table, doneCallback) {
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
+  console.log('v2')
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
       console.log(creds);
