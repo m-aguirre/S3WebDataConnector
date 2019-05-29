@@ -17,3 +17,22 @@ ul {
   margin-left: 5%;
   margin-right: 0;
 }
+
+.top-bar img {
+  width: 30%;
+}
+
+.bucket-selection-container {
+  background-color: #1C4E55;
+  height: 10vh;
+  width: 70%;
+  margin: auto;
+  font-size: 20;
+  color: white;
+}
+.bucket-selection-container label {
+  padding: 18;
+}
+
+/* green 1C4E55 */
+/* yellow F9D21A */

@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <div class="top-bar">
+      <img src="./assets/jumpshot-logo-charcoal.png" alt="">
+    </div>
     <div class="container container-table">
 
         <div class="authentication-pane">
@@ -27,8 +30,11 @@
 
         <div class="row vertical-center-row selection-pane" style="display:none;">
             <div class="text-center col-md-4 col-md-offset-4">
-              <label for="bucket-selector">S3 Bucket:</label>
-              <label>jumpshot-data-samples</label>
+              <div class="bucket-selection-container">
+                <label for="bucket-selector">S3 Bucket:</label>
+                <label>jumpshot-data-samples</label>
+                
+              </div>
               <br>
               <label for="file-selector">Select JS data file to upload:</label>
               <form id="file-selector" name="file-selector">
