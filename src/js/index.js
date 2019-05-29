@@ -10,90 +10,82 @@ var structureBuilder = require('./dataFileStructure.js');
 var dataFromS3 = ['empty'];
 
 
-var dataAsJson = [
-{0: "20140101", 1: "222253", 2: "57fbde4915cdba5fad8997d297b44fd6", 3: "1800flowers.com", 4: "Product page", id: 1},
-{0: "20140101", 1: "072541", 2: "2ff4f3883bf39c55989499e291f948c8", 3: "1800flowers.com", 4: "Product page", id: 2},
-{0: "20140101", 1: "144128", 2: "4a1f123060def68997e3266cbbd4888a", 3: "1800flowers.com", 4: "Product page", id: 3},
-{0: "20140101", 1: "220710", 2: "2afd4bd95c09afeba81ff2db6003dbc1", 3: "1800flowers.com", 4: "Product page", id: 4},
-{0: "20140101", 1: "223121", 2: "2afd4bd95c09afeba81ff2db6003dbc1", 3: "1800flowers.com", 4: "Product page", id: 5},
-{0: "20140101", 1: "144147", 2: "4a1f123060def68997e3266cbbd4888a", 3: "1800flowers.com", 4: "Product page", id: 6},
-{0: "20140101", 1: "062139", 2: "a9947524d6263584c0d9e5b4a3a548e9", 3: "1800flowers.com", 4: "Add to cart", id: 7},
-{0: "20140101", 1: "062126", 2: "a9947524d6263584c0d9e5b4a3a548e9", 3: "1800flowers.com", 4: "Add to cart", id: 8},
-{0: "20140101", 1: "095959", 2: "6835fd7f5d52e8e85a06083d5eca31f7", 3: "1800flowers.com", 4: "Product page", id: 9}
-]
-// var dataAsJson = [ { id: 0,
-// start: 'Feb 25, 2019',
-// conversions: 15172,
-// end: 'Feb 25, 2019',
-// percent: 1 },
-// { id: 1,
-// start: 'Feb 26, 2019',
-// conversions: 10990,
-// end: 'Feb 26, 2019',
-// percent: 1 },
-// { id: 2,
-// start: 'Feb 27, 2019',
-// conversions: 9824,
-// end: 'Feb 27, 2019',
-// percent: 1 },
-// { id: 3,
-// start: 'Feb 28, 2019',
-// conversions: 10454,
-// end: 'Feb 28, 2019',
-// percent: 1 },
-// { id: 4,
-// start: 'Mar 1, 2019',
-// conversions: 12698,
-// end: 'Mar 1, 2019',
-// percent: 1 },
-// { id: 5,
-// start: 'Mar 2, 2019',
-// conversions: 12191,
-// end: 'Mar 2, 2019',
-// percent: 1 },
-// { id: 6,
-// start: 'Mar 3, 2019',
-// conversions: 13483,
-// end: 'Mar 3, 2019',
-// percent: 1 } ];
+
+
+
+var dataAsJson = [ { id: 0,
+start: 'Feb 25, 2019',
+conversions: 15172,
+end: 'Feb 25, 2019',
+percent: 1 },
+{ id: 1,
+start: 'Feb 26, 2019',
+conversions: 10990,
+end: 'Feb 26, 2019',
+percent: 1 },
+{ id: 2,
+start: 'Feb 27, 2019',
+conversions: 9824,
+end: 'Feb 27, 2019',
+percent: 1 },
+{ id: 3,
+start: 'Feb 28, 2019',
+conversions: 10454,
+end: 'Feb 28, 2019',
+percent: 1 },
+{ id: 4,
+start: 'Mar 1, 2019',
+conversions: 12698,
+end: 'Mar 1, 2019',
+percent: 1 },
+{ id: 5,
+start: 'Mar 2, 2019',
+conversions: 12191,
+end: 'Mar 2, 2019',
+percent: 1 },
+{ id: 6,
+start: 'Mar 3, 2019',
+conversions: 13483,
+end: 'Mar 3, 2019',
+percent: 1 } ];
 
 (function () {
   var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
   var myConnector = tableau.makeConnector();
 
-  var cols = []
-  for (let i = 0; i < 5; i++) {
-    let obj = {
-      id: i,
-      dataType: tableau.dataTypeEnum.string
-    };
-    cols.push(obj)
-  }
-  console.log(cols)
+  // var cols = []
+  // for (let i = 0; i < 5; i++) {
+  //   let obj = {
+  //     id: i,
+  //     dataType: tableau.dataTypeEnum.string
+  //   };
+  //   cols.push(obj)
+  // }
+  // console.log(cols)
   myConnector.getSchema = function(schemaCallback) {
 
 
-    // var cols = [{
-    //   id: 'id',
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: 'start',
-    //   alias: 'start-date',
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: 'conversions',
-    //   alias: 'conversions',
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: 'end',
-    //   alias: 'end-date',
-    //   dataType: tableau.dataTypeEnum.string
-    // } , {
-    //   id: 'percent',
-    //   alias: 'percentage',
-    //   dataType: tableau.dataTypeEnum.string
-    // }];
+    var cols = [{
+      id: 'id',
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: 'start',
+      alias: 'start-date',
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: 'conversions',
+      alias: 'conversions',
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: 'end',
+      alias: 'end-date',
+      dataType: tableau.dataTypeEnum.string
+    } , {
+      id: 'percent',
+      alias: 'percentage',
+      dataType: tableau.dataTypeEnum.string
+    }];
 
     var tableSchema = {
       id: 'feedPrototype',
