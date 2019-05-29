@@ -3,12 +3,15 @@ ul {
 }
 
 .file-info-tile {
-  margin-top: 15px;
-  background-color: #EFEFEF;
+  background-color: #1C4E55;
+  color: white;
   border-style: solid;
-  border-color: black;
+  border-color: #3A3A46;
   border-width: 2px;
   border-radius: 5px;
+  margin: auto;
+  margin-top: 15px;
+  width: 60%;
   display: flex;
 }
 
@@ -34,5 +37,9 @@ ul {
   padding: 18;
 }
 
+.btn-success {
+  background-color: #3A3A46;
+  border-color: #3A3A46;
+}
 /* green 1C4E55 */
 /* yellow F9D21A */
