@@ -47,9 +47,9 @@ end: 'Mar 3, 2019',
 percent: 1 } ];
 
 var feedJson = [
-{"0": "20140101", "1": "222253", "2": "57fbde4915cdba5fad8997d297b44fd6", "3": "1800flowers.com", "4": "Product page", id: 1},
-{"0": "20140101", "1": "072541", "2": "2ff4f3883bf39c55989499e291f948c8", "3": "1800flowers.com", "4": "Product page", id: 2},
-{"0": "20140101", "1": "144128", "2": "4a1f123060def68997e3266cbbd4888a", "3": "1800flowers.com", "4": "Product page", id: 3}
+{"a": "20140101", "b": "222253", "c": "57fbde4915cdba5fad8997d297b44fd6", "d": "1800flowers.com", "e": "Product page", id: 1},
+{"a": "20140101", "b": "072541", "c": "2ff4f3883bf39c55989499e291f948c8", "d": "1800flowers.com", "e": "Product page", id: 2},
+{"a": "20140101", "b": "144128", "c": "4a1f123060def68997e3266cbbd4888a", "d": "1800flowers.com", "e": "Product page", id: 3}
 ]
 
 
@@ -102,19 +102,19 @@ var feedJson = [
 
 
     var cols = [{
-      id: "0",
+      id: "a",
       dataType: tableau.dataTypeEnum.string
     }, {
-      id: "1",
+      id: "b",
       dataType: tableau.dataTypeEnum.string
     },{
-      id: "2",
+      id: "c",
       dataType: tableau.dataTypeEnum.string
     }, {
-      id: "3",
+      id: "d",
       dataType: tableau.dataTypeEnum.string
     }, {
-      id: "4",
+      id: "e",
       dataType: tableau.dataTypeEnum.string
     }, {
       id: "id",
