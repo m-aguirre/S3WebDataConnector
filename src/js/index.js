@@ -46,11 +46,47 @@ conversions: 13483,
 end: 'Mar 3, 2019',
 percent: 1 } ];
 
-var feedJson = [
-{a: "20140101", b: "222253", c: "57fbde4915cdba5fad8997d297b44fd6", d: "1800flowers.com", e: "Product page", id: 1},
-{a: "20140101", b: "072541", b: "2ff4f3883bf39c55989499e291f948c8", d: "1800flowers.com", e: "Product page", id: 2},
-{a: "20140101", b: "144128", c: "4a1f123060def68997e3266cbbd4888a", d: "1800flowers.com", e: "Product page", id: 3}
-]
+// var feedJson = [
+// {a: "20140101", b: "222253", c: "57fbde4915cdba5fad8997d297b44fd6", d: "1800flowers.com", e: "Product page", id: 1},
+// {a: "20140101", b: "072541", b: "2ff4f3883bf39c55989499e291f948c8", d: "1800flowers.com", e: "Product page", id: 2},
+// {a: "20140101", b: "144128", c: "4a1f123060def68997e3266cbbd4888a", d: "1800flowers.com", e: "Product page", id: 3}
+// ]
+
+var feedJson = [ { id: 0,
+start: 'Feb 25, 2019',
+conversions: 15172,
+end: 'Feb 25, 2019',
+percent: 1 },
+{ id: 1,
+start: 'Feb 26, 2019',
+conversions: 10990,
+end: 'Feb 26, 2019',
+percent: 1 },
+{ id: 2,
+start: 'Feb 27, 2019',
+conversions: 9824,
+end: 'Feb 27, 2019',
+percent: 1 },
+{ id: 3,
+start: 'Feb 28, 2019',
+conversions: 10454,
+end: 'Feb 28, 2019',
+percent: 1 },
+{ id: 4,
+start: 'Mar 1, 2019',
+conversions: 12698,
+end: 'Mar 1, 2019',
+percent: 1 },
+{ id: 5,
+start: 'Mar 2, 2019',
+conversions: 12191,
+end: 'Mar 2, 2019',
+percent: 1 },
+{ id: 6,
+start: 'Mar 3, 2019',
+conversions: 13483,
+end: 'Mar 3, 2019',
+percent: 1 } ];
 
 
 (function () {
