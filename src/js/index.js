@@ -10,9 +10,6 @@ var structureBuilder = require('./dataFileStructure.js');
 var dataFromS3 = ['empty'];
 
 
-
-
-
 var dataAsJson = [ { id: 0,
 start: 'Feb 25, 2019',
 conversions: 15172,
@@ -49,8 +46,24 @@ conversions: 13483,
 end: 'Mar 3, 2019',
 percent: 1 } ];
 
+var feedJson = [
+{"0": "20140101", "1": "222253", "2": "57fbde4915cdba5fad8997d297b44fd6", "3": "1800flowers.com", "4": "Product page", id: 1},
+{"0": "20140101", "1": "072541", "2": "2ff4f3883bf39c55989499e291f948c8", "3": "1800flowers.com", "4": "Product page", id: 2},
+{"0": "20140101", "1": "144128", "2": "4a1f123060def68997e3266cbbd4888a", "3": "1800flowers.com", "4": "Product page", id: 3}
+]
+
+
+// {0: "20140101", 1: "220710", 2: "2afd4bd95c09afeba81ff2db6003dbc1", 3: "1800flowers.com", 4: "Product page", id: 4},
+// {0: "20140101", 1: "223121", 2: "2afd4bd95c09afeba81ff2db6003dbc1", 3: "1800flowers.com", 4: "Product page", id: 5},
+// {0: "20140101", 1: "144147", 2: "4a1f123060def68997e3266cbbd4888a", 3: "1800flowers.com", 4: "Product page", id: 6},
+// {0: "20140101", 1: "062139", 2: "a9947524d6263584c0d9e5b4a3a548e9", 3: "1800flowers.com", 4: "Add to cart", id: 7},
+// {0: "20140101", 1: "062126", 2: "a9947524d6263584c0d9e5b4a3a548e9", 3: "1800flowers.com", 4: "Add to cart", id: 8},
+// {0: "20140101", 1: "095959", 2: "6835fd7f5d52e8e85a06083d5eca31f7", 3: "1800flowers.com", 4: "Product page", id: 9},
+// ]
+
+
+
 (function () {
-  var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
   var myConnector = tableau.makeConnector();
 
@@ -66,24 +79,45 @@ percent: 1 } ];
   myConnector.getSchema = function(schemaCallback) {
 
 
+    // var cols = [{
+    //   id: 'id',
+    //   dataType: tableau.dataTypeEnum.string
+    // }, {
+    //   id: 'start',
+    //   alias: 'start-date',
+    //   dataType: tableau.dataTypeEnum.string
+    // }, {
+    //   id: 'conversions',
+    //   alias: 'conversions',
+    //   dataType: tableau.dataTypeEnum.string
+    // }, {
+    //   id: 'end',
+    //   alias: 'end-date',
+    //   dataType: tableau.dataTypeEnum.string
+    // } , {
+    //   id: 'percent',
+    //   alias: 'percentage',
+    //   dataType: tableau.dataTypeEnum.string
+    // }];
+
+
     var cols = [{
-      id: 'id',
+      id: "0",
       dataType: tableau.dataTypeEnum.string
     }, {
-      id: 'start',
-      alias: 'start-date',
+      id: "1",
+      dataType: tableau.dataTypeEnum.string
+    },{
+      id: "2",
       dataType: tableau.dataTypeEnum.string
     }, {
-      id: 'conversions',
-      alias: 'conversions',
+      id: "3",
       dataType: tableau.dataTypeEnum.string
     }, {
-      id: 'end',
-      alias: 'end-date',
+      id: "4",
       dataType: tableau.dataTypeEnum.string
-    } , {
-      id: 'percent',
-      alias: 'percentage',
+    }, {
+      id: "id",
       dataType: tableau.dataTypeEnum.string
     }];
 
@@ -220,12 +254,6 @@ $(document).ready(function () {
             }
               tableau.registerConnector(myConnector);
           })();
-
-
-
-
-
-
 
 
           tableau.connectionName = "Jumpshot Sample Feed";
