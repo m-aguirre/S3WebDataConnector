@@ -53,16 +53,6 @@ var feedJson = [
 ]
 
 
-// {0: "20140101", 1: "220710", 2: "2afd4bd95c09afeba81ff2db6003dbc1", 3: "1800flowers.com", 4: "Product page", id: 4},
-// {0: "20140101", 1: "223121", 2: "2afd4bd95c09afeba81ff2db6003dbc1", 3: "1800flowers.com", 4: "Product page", id: 5},
-// {0: "20140101", 1: "144147", 2: "4a1f123060def68997e3266cbbd4888a", 3: "1800flowers.com", 4: "Product page", id: 6},
-// {0: "20140101", 1: "062139", 2: "a9947524d6263584c0d9e5b4a3a548e9", 3: "1800flowers.com", 4: "Add to cart", id: 7},
-// {0: "20140101", 1: "062126", 2: "a9947524d6263584c0d9e5b4a3a548e9", 3: "1800flowers.com", 4: "Add to cart", id: 8},
-// {0: "20140101", 1: "095959", 2: "6835fd7f5d52e8e85a06083d5eca31f7", 3: "1800flowers.com", 4: "Product page", id: 9},
-// ]
-
-
-
 (function () {
 
   var myConnector = tableau.makeConnector();
