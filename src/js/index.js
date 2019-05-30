@@ -217,30 +217,47 @@ $(document).ready(function () {
               //     cols.push(obj)
               //   }
 
+              // var cols = [{
+              //   id: 'id',
+              //   dataType: tableau.dataTypeEnum.string
+              // }, {
+              //   id: 'start',
+              //   alias: 'start-date',
+              //   dataType: tableau.dataTypeEnum.string
+              // }, {
+              //   id: 'conversions',
+              //   alias: 'conversions',
+              //   dataType: tableau.dataTypeEnum.string
+              // }, {
+              //   id: 'end',
+              //   alias: 'end-date',
+              //   dataType: tableau.dataTypeEnum.string
+              // } , {
+              //   id: 'percent',
+              //   alias: 'percentage',
+              //   dataType: tableau.dataTypeEnum.string
+              // }];
+
               var cols = [{
-                id: 'id',
+                id: "id",
                 dataType: tableau.dataTypeEnum.string
               }, {
-                id: 'start',
-                alias: 'start-date',
+                id: "1",
+                dataType: tableau.dataTypeEnum.string
+              },{
+                id: "2",
                 dataType: tableau.dataTypeEnum.string
               }, {
-                id: 'conversions',
-                alias: 'conversions',
+                id: "3",
                 dataType: tableau.dataTypeEnum.string
               }, {
-                id: 'end',
-                alias: 'end-date',
-                dataType: tableau.dataTypeEnum.string
-              } , {
-                id: 'percent',
-                alias: 'percentage',
+                id: "4",
                 dataType: tableau.dataTypeEnum.string
               }];
 
               var tableSchema = {
                 id: 'feedPrototype',
-                alias: 'Jumpshot sample feed',
+                alias: 'Jumpshot sample-feed',
                 columns: cols
               }
 
@@ -248,7 +265,7 @@ $(document).ready(function () {
             }
 
           myConnector.getData = function(table, doneCallback) {
-              var tableData = dataFromS3;
+              var tableData = feedJson;
                table.appendRows(tableData);
                doneCallback();
             };
