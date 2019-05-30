@@ -53,40 +53,25 @@ percent: 1 } ];
 // ]
 
 var feedJson = [ { id: 0,
-start: 'Feb 25, 2019',
-conversions: 15172,
-end: 'Feb 25, 2019',
-percent: 1 },
+"1": 'Feb 25, 2019',
+"2": 15172,
+"3": 'Feb 25, 2019',
+"4": 1 },
 { id: 1,
-start: 'Feb 26, 2019',
-conversions: 10990,
-end: 'Feb 26, 2019',
-percent: 1 },
+"1": 'Feb 26, 2019',
+"2": 10990,
+"3": 'Feb 26, 2019',
+"4": 1 },
 { id: 2,
-start: 'Feb 27, 2019',
-conversions: 9824,
-end: 'Feb 27, 2019',
-percent: 1 },
+"1": 'Feb 27, 2019',
+"2": 9824,
+"3": 'Feb 27, 2019',
+"4": 1 },
 { id: 3,
-start: 'Feb 28, 2019',
-conversions: 10454,
-end: 'Feb 28, 2019',
-percent: 1 },
-{ id: 4,
-start: 'Mar 1, 2019',
-conversions: 12698,
-end: 'Mar 1, 2019',
-percent: 1 },
-{ id: 5,
-start: 'Mar 2, 2019',
-conversions: 12191,
-end: 'Mar 2, 2019',
-percent: 1 },
-{ id: 6,
-start: 'Mar 3, 2019',
-conversions: 13483,
-end: 'Mar 3, 2019',
-percent: 1 } ];
+"1": 'Feb 28, 2019',
+"2": 10454,
+"3": 'Feb 28, 2019',
+"4": 1 } ];
 
 
 (function () {
@@ -138,9 +123,6 @@ percent: 1 } ];
       dataType: tableau.dataTypeEnum.string
     }, {
       id: "d",
-      dataType: tableau.dataTypeEnum.string
-    }, {
-      id: "e",
       dataType: tableau.dataTypeEnum.string
     }, {
       id: "id",
