@@ -87,29 +87,6 @@ var feedJson = [ { id: 0,
 
   myConnector.getSchema = function(schemaCallback) {
 
-
-    // var cols = [{
-    //   id: 'id',
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: 'start',
-    //   alias: 'start-date',
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: 'conversions',
-    //   alias: 'conversions',
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: 'end',
-    //   alias: 'end-date',
-    //   dataType: tableau.dataTypeEnum.string
-    // } , {
-    //   id: 'percent',
-    //   alias: 'percentage',
-    //   dataType: tableau.dataTypeEnum.string
-    // }];
-
-
     // var cols = [{
     //   id: "id",
     //   dataType: tableau.dataTypeEnum.string
