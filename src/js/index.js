@@ -204,7 +204,7 @@ $(document).ready(function () {
         }).then(function (res) {
           console.log('Response Data: ')
           console.log(res.data)
-          formatData(res.data);
+          var formattedData = formatData(res.data);
           (function () {
             var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
@@ -212,35 +212,6 @@ $(document).ready(function () {
 
             myConnector.getSchema = function(schemaCallback) {
 
-              // var cols = []
-              //   for (let i = 0; i < 19; i++) {
-              //     let obj = {
-              //       id: i.toString(),
-              //       dataType: tableau.dataTypeEnum.string
-              //     };
-              //     cols.push(obj)
-              //   }
-
-              // var cols = [{
-              //   id: 'id',
-              //   dataType: tableau.dataTypeEnum.string
-              // }, {
-              //   id: 'start',
-              //   alias: 'start-date',
-              //   dataType: tableau.dataTypeEnum.string
-              // }, {
-              //   id: 'conversions',
-              //   alias: 'conversions',
-              //   dataType: tableau.dataTypeEnum.string
-              // }, {
-              //   id: 'end',
-              //   alias: 'end-date',
-              //   dataType: tableau.dataTypeEnum.string
-              // } , {
-              //   id: 'percent',
-              //   alias: 'percentage',
-              //   dataType: tableau.dataTypeEnum.string
-              // }];
 
               // var cols = [{
               //   id: "id",
@@ -282,7 +253,7 @@ $(document).ready(function () {
             }
 
           myConnector.getData = function(table, doneCallback) {
-              var tableData = feedJson;
+              var tableData = formattedData;
                table.appendRows(tableData);
                doneCallback();
             };
@@ -298,7 +269,7 @@ $(document).ready(function () {
           })();
 
 
-          tableau.connectionName = "Jumpshot Sample Feed";
+          tableau.connectionName = "Jumpshot Dynamic Feed";
           tableau.submit();
           //const decompressor = new Decompressor(res.data);
           //let unzippedFile = decompressor.decompress();
