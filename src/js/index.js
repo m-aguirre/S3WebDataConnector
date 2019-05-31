@@ -47,26 +47,30 @@ end: 'Mar 3, 2019',
 percent: 1 } ];
 
 
-var feedJson = [ { id: 0,
+var feedJson = [ {
 "1": "20140101",
 "2": "222253",
 "3": "57fbde4915cdba5fad8997d297b44fd6",
-"4": "1800flowers.com"},
-{ id: 1,
+"4": "1800flowers.com",
+id: 0},
+{
 "1": "20140101",
 "2": "072541",
 "3": "2ff4f3883bf39c55989499e291f948c8",
-"4": "1800flowers.com" },
-{ id: 2,
+"4": "1800flowers.com",
+id: 1},
+{
 "1": "20140101",
 "2": "144128",
 "3": "4a1f123060def68997e3266cbbd4888a",
-"4": "1800flowers.com" },
-{ id: 3,
+"4": "1800flowers.com",
+id: 2},
+{
 "1": "20140101",
 "2": "220710",
 "3": "2afd4bd95c09afeba81ff2db6003dbc1",
-"4": "1800flowers.com" } ];
+"4": "1800flowers.com",
+id: 3} ];
 
 
 
@@ -143,7 +147,6 @@ const formatData = (data) => {
     }
     dataCollection.push(obj);
   }
-  console.log(dataCollection);
   return dataCollection
 }
 
@@ -175,8 +178,8 @@ $(document).ready(function () {
           }
         }).then(function (res) {
           console.log('Response Data: ')
-          console.log(res.data)
           var formattedData = formatData(res.data);
+          console.log(formattedData)
           (function () {
             var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
@@ -225,7 +228,7 @@ $(document).ready(function () {
             }
 
           myConnector.getData = function(table, doneCallback) {
-              var tableData = formattedData;
+              var tableData = feedJson;
                table.appendRows(tableData);
                doneCallback();
             };
@@ -278,7 +281,7 @@ $(document).ready(function() {
 
       $('.selection-pane').toggle();
       $.each(res.data, function(index, file) {
-        console.log(file);
+//        console.log(file);
         if (file.Size > 0) {
           $('#file-selector').append($(structureBuilder.buildStructure(file)));
           }
