@@ -73,88 +73,86 @@ var feedJson = [ { id: 0,
 "3": "2afd4bd95c09afeba81ff2db6003dbc1",
 "4": "1800flowers.com" } ];
 
-var myConnector = tableau.makeConnector();
-tableau.registerConnector(myConnector);
-//
-// (function () {
-//
-//   var myConnector = tableau.makeConnector();
-//
-//   // var cols = []
-//   // for (let i = 0; i < 5; i++) {
-//   //   let obj = {
-//   //     id: i,
-//   //     dataType: tableau.dataTypeEnum.string
-//   //   };
-//   //   cols.push(obj)
-//   // }
-//   // console.log(cols)
-//   myConnector.getSchema = function(schemaCallback) {
-//
-//
-//     // var cols = [{
-//     //   id: 'id',
-//     //   dataType: tableau.dataTypeEnum.string
-//     // }, {
-//     //   id: 'start',
-//     //   alias: 'start-date',
-//     //   dataType: tableau.dataTypeEnum.string
-//     // }, {
-//     //   id: 'conversions',
-//     //   alias: 'conversions',
-//     //   dataType: tableau.dataTypeEnum.string
-//     // }, {
-//     //   id: 'end',
-//     //   alias: 'end-date',
-//     //   dataType: tableau.dataTypeEnum.string
-//     // } , {
-//     //   id: 'percent',
-//     //   alias: 'percentage',
-//     //   dataType: tableau.dataTypeEnum.string
-//     // }];
-//
-//
-//     var cols = [{
-//       id: "id",
-//       dataType: tableau.dataTypeEnum.string
-//     }, {
-//       id: "1",
-//       dataType: tableau.dataTypeEnum.string
-//     },{
-//       id: "2",
-//       dataType: tableau.dataTypeEnum.string
-//     }, {
-//       id: "3",
-//       dataType: tableau.dataTypeEnum.string
-//     }, {
-//       id: "4",
-//       dataType: tableau.dataTypeEnum.string
-//     }];
-//
-//     var tableSchema = {
-//       id: 'feedPrototype',
-//       alias: 'Jumpshot sample feed',
-//       columns: cols
-//     }
-//
-//     schemaCallback([tableSchema]);
-//   }
-//
-// myConnector.getData = function(table, doneCallback) {
-//     var tableData = feedJson;
-//      table.appendRows(tableData);
-//      doneCallback();
-//   };
-//
-//
-//   //TODO remove
-//   myConnector.getFileNames = function() {
-//     var fileNames = S3.getS3FileList();
-//     console.log(fileNames);
-//     return fileNames
-//   }
-//     tableau.registerConnector(myConnector);
-// })();
+
+
+
+  var myConnector = tableau.makeConnector();
+
+  // var cols = []
+  // for (let i = 0; i < 5; i++) {
+  //   let obj = {
+  //     id: i,
+  //     dataType: tableau.dataTypeEnum.string
+  //   };
+  //   cols.push(obj)
+  // }
+  // console.log(cols)
+  myConnector.getSchema = function(schemaCallback) {
+
+
+    // var cols = [{
+    //   id: 'id',
+    //   dataType: tableau.dataTypeEnum.string
+    // }, {
+    //   id: 'start',
+    //   alias: 'start-date',
+    //   dataType: tableau.dataTypeEnum.string
+    // }, {
+    //   id: 'conversions',
+    //   alias: 'conversions',
+    //   dataType: tableau.dataTypeEnum.string
+    // }, {
+    //   id: 'end',
+    //   alias: 'end-date',
+    //   dataType: tableau.dataTypeEnum.string
+    // } , {
+    //   id: 'percent',
+    //   alias: 'percentage',
+    //   dataType: tableau.dataTypeEnum.string
+    // }];
+
+
+    var cols = [{
+      id: "id",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "1",
+      dataType: tableau.dataTypeEnum.string
+    },{
+      id: "2",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "3",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "4",
+      dataType: tableau.dataTypeEnum.string
+    }];
+
+    var tableSchema = {
+      id: 'feedPrototype',
+      alias: 'Jumpshot sample feed',
+      columns: cols
+    }
+
+    schemaCallback([tableSchema]);
+  }
+
+myConnector.getData = function(table, doneCallback) {
+    var tableData = feedJson;
+     table.appendRows(tableData);
+     doneCallback();
+  };
+
+
+  //TODO remove
+  myConnector.getFileNames = function() {
+    var fileNames = S3.getS3FileList();
+    console.log(fileNames);
+    return fileNames
+  }
+    tableau.registerConnector(myConnector);
+
 
 
 /*
@@ -207,7 +205,7 @@ $(document).ready(function () {
           (function () {
             var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
-            //var myConnector = tableau.makeConnector();
+            var myConnector = tableau.makeConnector();
 
             myConnector.getSchema = function(schemaCallback) {
 
@@ -280,7 +278,7 @@ $(document).ready(function () {
               console.log(fileNames);
               return fileNames
             }
-              //tableau.registerConnector(myConnector);
+              tableau.registerConnector(myConnector);
           })();
 
 
@@ -301,6 +299,7 @@ var creds = {
   secret: ''
 }
 
+//TODO add catch for invalid logins
 $(document).ready(function() {
   $(".auth-form").submit(function(e) {
     e.preventDefault();
@@ -333,11 +332,7 @@ $(document).ready(function() {
     //console.log(f)
     return false;
   });
-
-
   $('.file-info-tile').click(function(){
     $(":checkbox:eq(0)", this).attr("checked", "checked");
   });
-
-
 });
