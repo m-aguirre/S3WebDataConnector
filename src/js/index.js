@@ -128,8 +128,6 @@ myConnector.getData = function(table, doneCallback) {
   }
     tableau.registerConnector(myConnector);
 
-
-
 /*
 Formats data retrieved from S3 into JSON data that can be handled by tableau
 @param array of arrays
@@ -138,7 +136,7 @@ const formatData = (data) => {
   let dataCollection = []
   for (let i = 0; i < 4 ; i++) { // data.length
     let obj = {id: i}
-    for (let j = 0; j < 4; j++) { //data[i].length
+    for (let j = 0; j < 5; j++) { //data[i].length
       obj[j.toString()] = data[i][j]
     }
     dataCollection.push(obj);
@@ -176,6 +174,7 @@ $(document).ready(function () {
           console.log('Response Data: ')
           var formattedData = formatData(res.data);
           console.log(formattedData);
+          console.log(feedJson);
           (function () {
             var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
@@ -203,7 +202,7 @@ $(document).ready(function () {
 
 
               var cols = []
-              for (let i = 1; i < 5; i++) {
+              for (let i = 0; i < 5; i++) {
                 let obj = {
                   id: i,
                   dataType: tableau.dataTypeEnum.string
@@ -220,7 +219,6 @@ $(document).ready(function () {
                 alias: 'Jumpshot sample-feed',
                 columns: cols
               }
-
               schemaCallback([tableSchema]);
             }
 
