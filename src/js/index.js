@@ -48,32 +48,32 @@ percent: 1 } ];
 
 
 var feedJson = [ {
-"1": "20140101",
-"2": "222253",
-"3": "57fbde4915cdba5fad8997d297b44fd6",
-"4": "1800flowers.com",
-"5": "Product page",
+"0": "20140101",
+"1": "222253",
+"2": "57fbde4915cdba5fad8997d297b44fd6",
+"3": "1800flowers.com",
+"4": "Product page",
 id: 0},
 {
-"1": "20140101",
-"2": "072541",
-"3": "2ff4f3883bf39c55989499e291f948c8",
-"4": "1800flowers.com",
-"5": "Product page",
+"0": "20140101",
+"1": "072541",
+"2": "2ff4f3883bf39c55989499e291f948c8",
+"3": "1800flowers.com",
+"4": "Product page",
  id: 1 },
 {
-"1": "20140101",
-"2": "144128",
-"3": "4a1f123060def68997e3266cbbd4888a",
-"4": "1800flowers.com",
-"5": "Product page",
+"0": "20140101",
+"1": "144128",
+"2": "4a1f123060def68997e3266cbbd4888a",
+"3": "1800flowers.com",
+"4": "Product page",
 id: 2 },
 {
-"1": "20140101",
-"2": "220710",
-"3": "2afd4bd95c09afeba81ff2db6003dbc1",
-"4": "1800flowers.com",
-'5': "Product page" ,
+"0": "20140101",
+"1": "220710",
+"2": "2afd4bd95c09afeba81ff2db6003dbc1",
+"3": "1800flowers.com",
+'4': "Product page" ,
 id: 3}];
 
 
@@ -231,7 +231,7 @@ $(document).ready(function () {
             }
 
           myConnector.getData = function(table, doneCallback) {
-              var tableData = formattedData;
+              var tableData = feedJson;
                table.appendRows(tableData);
                doneCallback();
             };
