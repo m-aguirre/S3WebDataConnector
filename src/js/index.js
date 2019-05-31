@@ -76,8 +76,28 @@ id: 2 },
 '4': "Product page" ,
 id: 3}];
 
-
-
+var cols = [ {
+  id: "0",
+  dataType: tableau.dataTypeEnum.string
+},{
+  id: "1",
+  dataType: tableau.dataTypeEnum.string
+}, {
+  id: "2",
+  dataType: tableau.dataTypeEnum.string
+}, {
+  id: "3",
+  dataType: tableau.dataTypeEnum.string
+}, {
+  id: "4",
+  dataType: tableau.dataTypeEnum.string
+}, {
+  id: "id",
+  dataType: tableau.dataTypeEnum.string
+}];
+console.log('testing ---');
+console.log(feedJson);
+console.log(cols);
 
   var myConnector = tableau.makeConnector();
 
@@ -95,30 +115,30 @@ id: 3}];
 
   myConnector.getSchema = function(schemaCallback) {
 
-    // var cols = [{
-    //   id: "id",
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: "1",
-    //   dataType: tableau.dataTypeEnum.string
-    // },{
-    //   id: "2",
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: "3",
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: "4",
-    //   dataType: tableau.dataTypeEnum.string
-    // }];
-    //
-    // var tableSchema = {
-    //   id: 'feedPrototype',
-    //   alias: 'Jumpshot sample feed',
-    //   columns: cols
-    // }
-    //
-    // schemaCallback([tableSchema]);
+    var cols = [ {
+      id: "0",
+      dataType: tableau.dataTypeEnum.string
+    },{
+      id: "1",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "2",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "3",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "id",
+      dataType: tableau.dataTypeEnum.string
+    }];
+
+    var tableSchema = {
+      id: 'feedPrototype',
+      alias: 'Jumpshot sample feed',
+      columns: cols
+    }
+
+    schemaCallback([tableSchema]);
   }
 
 myConnector.getData = function(table, doneCallback) {
@@ -209,18 +229,18 @@ $(document).ready(function () {
               // }];
 
 
-              var cols = []
-              for (let i = 0; i < 5; i++) {
-                let obj = {
-                  id: i,
-                  dataType: tableau.dataTypeEnum.string
-                };
-                cols.push(obj)
-              }
-              cols.push({
-                 id: "id",
-                 dataType: tableau.dataTypeEnum.string
-               })
+              // var cols = []
+              // for (let i = 0; i < 5; i++) {
+              //   let obj = {
+              //     id: i,
+              //     dataType: tableau.dataTypeEnum.string
+              //   };
+              //   cols.push(obj)
+              // }
+              // cols.push({
+              //    id: "id",
+              //    dataType: tableau.dataTypeEnum.string
+              //  })
 
               var tableSchema = {
                 id: 'feedPrototype',
