@@ -164,9 +164,9 @@ Formats data retrieved from S3 into JSON data that can be handled by tableau
 */
 const formatData = (data) => {
   let dataCollection = []
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < 4 ; i++) { // data.length
     let obj = {id: i}
-    for (let j = 0; j < 5; j++) { //data[i].length
+    for (let j = 0; j < 4; j++) { //data[i].length
       obj[j.toString()] = data[i][j]
     }
     dataCollection.push(obj);
