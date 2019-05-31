@@ -73,7 +73,9 @@ var feedJson = [ { id: 0,
 "3": "2afd4bd95c09afeba81ff2db6003dbc1",
 "4": "1800flowers.com" } ];
 
-// 
+var myConnector = tableau.makeConnector();
+tableau.registerConnector(myConnector);
+//
 // (function () {
 //
 //   var myConnector = tableau.makeConnector();
@@ -205,7 +207,7 @@ $(document).ready(function () {
           (function () {
             var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
 
-            var myConnector = tableau.makeConnector();
+            //var myConnector = tableau.makeConnector();
 
             myConnector.getSchema = function(schemaCallback) {
 
@@ -278,7 +280,7 @@ $(document).ready(function () {
               console.log(fileNames);
               return fileNames
             }
-              tableau.registerConnector(myConnector);
+              //tableau.registerConnector(myConnector);
           })();
 
 
