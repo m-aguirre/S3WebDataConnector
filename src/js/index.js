@@ -202,10 +202,7 @@ $(document).ready(function () {
               // }];
 
 
-              var cols = [{
-                 id: "id",
-                 dataType: tableau.dataTypeEnum.string
-               }]
+              var cols = []
               for (let i = 1; i < 5; i++) {
                 let obj = {
                   id: i,
@@ -213,6 +210,10 @@ $(document).ready(function () {
                 };
                 cols.push(obj)
               }
+              cols.push({
+                 id: "id",
+                 dataType: tableau.dataTypeEnum.string
+               })
 
               var tableSchema = {
                 id: 'feedPrototype',
