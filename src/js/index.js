@@ -14,7 +14,7 @@ var feedJson = [ {
 "1": "222253",
 "2": "57fbde4915cdba5fad8997d297b44fd6",
 "3": "1800flowers.com",
-"4": "Product page",
+"4": "TEST TEST",
 id: 0},
 {
 "0": "20140101",
@@ -204,6 +204,7 @@ $(document).ready(function () {
         }).then(function (res) {
           console.log('Response Data: ')
           var formattedData = formatData(res.data);
+          feedJson = formattedData;
           console.log(formattedData);
           console.log(feedJson);
 
