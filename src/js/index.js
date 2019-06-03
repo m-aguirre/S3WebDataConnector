@@ -61,19 +61,19 @@ id: 3}];
 // console.log(feedJson);
 // console.log(cols);
 
-cols = []
-cols.push({
-  id: "id",
-  dataType: tableau.dataTypeEnum.string
-});
-for (let i = 0; i < 5; i++) {
-  let obj = {
-    id: i.toString(),
-    dataType: tableau.dataTypeEnum.string
-  };
-  cols.push(obj)
-}
-console.log(cols);
+// cols = []
+// cols.push({
+//   id: "id",
+//   dataType: tableau.dataTypeEnum.string
+// });
+// for (let i = 0; i < 5; i++) {
+//   let obj = {
+//     id: i.toString(),
+//     dataType: tableau.dataTypeEnum.string
+//   };
+//   cols.push(obj)
+// }
+// console.log(cols);
 
 
 (function () {
