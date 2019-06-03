@@ -97,7 +97,7 @@ id: 3}];
 // }];
 console.log('testing ---');
 console.log(feedJson);
-console.log(cols);
+//console.log(cols);
 
   var myConnector = tableau.makeConnector();
 
