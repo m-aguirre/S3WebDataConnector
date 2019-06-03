@@ -128,7 +128,7 @@ var feed = [];
   }
 
   myConnector.getData = function(table, doneCallback) {
-     var tableData = feedJson;
+     var tableData = JSON.parse(tableau.connectionData);
      table.appendRows(tableData);
      doneCallback();
   };
@@ -184,6 +184,7 @@ $(document).ready(function () {
           feedJson = formattedData;
           console.log(feedJson);
           console.log(feed);
+          tableau.connectionData = JSON.stringify(formattedData);
           tableau.connectionName = "Jumpshot Dynamic-Feed";
           tableau.submit();
           //const decompressor = new Decompressor(res.data);
