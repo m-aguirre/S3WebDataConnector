@@ -91,41 +91,42 @@ console.log(cols)
 
   myConnector.getSchema = function(schemaCallback) {
 
-    // var cols = [ {
-    //   id: "0",
-    //   dataType: tableau.dataTypeEnum.string
-    // },{
-    //   id: "1",
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: "2",
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: "3",
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: "id",
-    //   dataType: tableau.dataTypeEnum.string
-    // }];
-    //
+    var cols = [
+      {
+       id: "id",
+       dataType: tableau.dataTypeEnum.string
+     }, {
+      id: "0",
+      dataType: tableau.dataTypeEnum.string
+    },{
+      id: "1",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "2",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "3",
+      dataType: tableau.dataTypeEnum.string
+    }];
+
     // var tableSchema = {
     //   id: 'feedPrototype',
     //   alias: 'Jumpshot sample feed',
     //   columns: cols
     // }
-
-    var cols = []
-    cols.push({
-      id: "id",
-      dataType: tableau.dataTypeEnum.string
-    });
-    for (let i = 0; i < 5; i++) {
-      let obj = {
-        id: i.toString(),
-        dataType: tableau.dataTypeEnum.string
-      };
-      cols.push(obj)
-    }
+    //
+    // var cols = []
+    // cols.push({
+    //   id: "id",
+    //   dataType: tableau.dataTypeEnum.string
+    // });
+    // for (let i = 0; i < 5; i++) {
+    //   let obj = {
+    //     id: i.toString(),
+    //     dataType: tableau.dataTypeEnum.string
+    //   };
+    //   cols.push(obj)
+    // }
 
     var tableSchema = {
       id: 'feedPrototype',
@@ -197,61 +198,6 @@ $(document).ready(function () {
           var formattedData = formatData(res.data);
           console.log(formattedData);
           console.log(feedJson);
-          (function () {
-            var fileNames = ["exampleJanuary.tsv", "exampleFebruary.tsv"];
-            console.log('IIFE---');
-            var myConnector = tableau.makeConnector();
-
-            myConnector.getSchema = function(schemaCallback) {
-
-
-              // var cols = [{
-              //   id: "id",
-              //   dataType: tableau.dataTypeEnum.string
-              // }, {
-              //   id: "1",
-              //   dataType: tableau.dataTypeEnum.string
-              // },{
-              //   id: "2",
-              //   dataType: tableau.dataTypeEnum.string
-              // }, {
-              //   id: "3",
-              //   dataType: tableau.dataTypeEnum.string
-              // }, {
-              //   id: "4",
-              //   dataType: tableau.dataTypeEnum.string
-              // }];
-
-
-              // var cols = []
-              // for (let i = 0; i < 5; i++) {
-              //   let obj = {
-              //     id: i,
-              //     dataType: tableau.dataTypeEnum.string
-              //   };
-              //   cols.push(obj)
-              // }
-              // cols.push({
-              //    id: "id",
-              //    dataType: tableau.dataTypeEnum.string
-              //  });
-              //
-              // var tableSchema = {
-              //   id: 'feedPrototype',
-              //   alias: 'Jumpshot sample-feed',
-              //   columns: cols
-              // }
-              // schemaCallback([tableSchema]);
-            }
-
-          myConnector.getData = function(table, doneCallback) {
-              var tableData = feedJson;
-               table.appendRows(tableData);
-               doneCallback();
-            };
-              tableau.registerConnector(myConnector);
-          })();
-
 
           tableau.connectionName = "Jumpshot Dynamic Feed";
           tableau.submit();
