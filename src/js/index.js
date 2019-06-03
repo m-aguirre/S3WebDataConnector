@@ -38,6 +38,7 @@ id: 2 },
 '4': "Product page" ,
 id: 3}];
 
+var feed = [];
 //console.log(Object.keys(feedJson[0]).length);
 // var cols = [ {
 //   id: "0",
@@ -79,39 +80,12 @@ id: 3}];
 
   myConnector.getSchema = function(schemaCallback) {
 
-    // var cols = [
-    //   {
-    //    id: "id",
-    //    dataType: tableau.dataTypeEnum.string
-    //  }, {
-    //   id: "0",
-    //   dataType: tableau.dataTypeEnum.string
-    // },{
-    //   id: "1",
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: "2",
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: "3",
-    //   dataType: tableau.dataTypeEnum.string
-    // }, {
-    //   id: "4",
-    //   dataType: tableau.dataTypeEnum.string
-    // }];
-
-    // var tableSchema = {
-    //   id: 'feedPrototype',
-    //   alias: 'Jumpshot sample feed',
-    //   columns: cols
-    // }
-    //
     var cols = []
     cols.push({
       id: "id",
       dataType: tableau.dataTypeEnum.string
     });
-    for (let i = 0; i < Object.keys(feedJson[0]).length - 1; i++) {
+    for (let i = 0; i < Object.keys(feed[0]).length - 1; i++) {
       let obj = {
         id: i.toString(),
         dataType: tableau.dataTypeEnum.string
@@ -129,7 +103,7 @@ id: 3}];
   }
 
 myConnector.getData = function(table, doneCallback) {
-     var tableData = feedJson;
+     var tableData = feed;
      table.appendRows(tableData);
      doneCallback();
   };
@@ -152,10 +126,11 @@ const formatData = (data) => {
   let dataCollection = []
   for (let i = 0; i < data.length ; i++) { // data.length 4
     let obj = {id: i}
-    dataCollection.push(obj);
     for (let j = 0; j < data[i].length; j++) { //data[i].length 5
       obj[j.toString()] = data[i][j]
     }
+    dataCollection.push(obj);
+    feed.push(obj);
   }
   return dataCollection
 }
@@ -189,9 +164,9 @@ $(document).ready(function () {
           console.log('Response Data: ')
           var formattedData = formatData(res.data);
           feedJson = formattedData;
-          console.log(feedJson);
-
-          tableau.connectionName = "Jumpshot Dynamic Feed";
+          //console.log(feedJson);
+          console.log(feed);
+          tableau.connectionName = "Jumpshot Dynamic-Feed";
           tableau.submit();
           //const decompressor = new Decompressor(res.data);
           //let unzippedFile = decompressor.decompress();
