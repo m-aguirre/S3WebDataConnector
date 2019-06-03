@@ -38,6 +38,7 @@ id: 2 },
 '4': "Product page" ,
 id: 3}];
 
+//console.log(Object.keys(feedJson[0]).length);
 // var cols = [ {
 //   id: "0",
 //   dataType: tableau.dataTypeEnum.string
@@ -127,7 +128,7 @@ id: 3}];
       id: "id",
       dataType: tableau.dataTypeEnum.string
     });
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < Object.keys(feedJson[0]).length - 1; i++) {
       let obj = {
         id: i.toString(),
         dataType: tableau.dataTypeEnum.string
@@ -145,7 +146,7 @@ id: 3}];
   }
 
 myConnector.getData = function(table, doneCallback) {
-    var tableData = feedJson;
+     var tableData = feedJson;
      table.appendRows(tableData);
      doneCallback();
   };
@@ -166,9 +167,9 @@ Formats data retrieved from S3 into JSON data that can be handled by tableau
 */
 const formatData = (data) => {
   let dataCollection = []
-  for (let i = 0; i < 4 ; i++) { // data.length
+  for (let i = 0; i < data.length ; i++) { // data.length 4
     let obj = {id: i}
-    for (let j = 0; j < 5; j++) { //data[i].length
+    for (let j = 0; j < data[i].length; j++) { //data[i].length 5
       obj[j.toString()] = data[i][j]
     }
     dataCollection.push(obj);
