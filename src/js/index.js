@@ -73,7 +73,7 @@ for (let i = 0; i < 5; i++) {
   };
   cols.push(obj)
 }
-console.log(cols)
+console.log(cols);
 
 
 (function () {
@@ -110,6 +110,9 @@ console.log(cols)
       dataType: tableau.dataTypeEnum.string
     }, {
       id: "3",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "4",
       dataType: tableau.dataTypeEnum.string
     }];
 
