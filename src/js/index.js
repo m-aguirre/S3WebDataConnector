@@ -9,34 +9,60 @@ var structureBuilder = require('./dataFileStructure.js');
 
 var dataFromS3 = ['empty'];
 
-var feedJson = [ {
-"0": "TEST",
-"1": "222253",
-"2": "57fbde4915cdba5fad8997d297b44fd6",
-"3": "1800flowers.com",
-"4": "TEST TEST",
-id: 0},
+// var feedJson = [ {
+// "0": "TEST",
+// "1": "222253",
+// "2": "57fbde4915cdba5fad8997d297b44fd6",
+// "3": "1800flowers.com",
+// "4": "TEST TEST",
+// id: 0},
+// {
+// "0": "20140101",
+// "1": "TEST",
+// "2": "2ff4f3883bf39c55989499e291f948c8",
+// "3": "1800flowers.com",
+// "4": "Product page",
+//  id: 1 },
+// {
+// "0": "TEST",
+// "1": "144128",
+// "2": "4a1f123060def68997e3266cbbd4888a",
+// "3": "1800flowers.com",
+// "4": "Product page",
+// id: 2 },
+// {
+// "0": "20140101",
+// "1": "220710",
+// "2": "TEST",
+// "3": "1800flowers.com",
+// '4': "Product page" ,
+// id: 3}];
+
+var feedJson = [
 {
-"0": "20140101",
-"1": "TEST",
-"2": "2ff4f3883bf39c55989499e291f948c8",
-"3": "1800flowers.com",
-"4": "Product page",
- id: 1 },
-{
-"0": "TEST",
-"1": "144128",
-"2": "4a1f123060def68997e3266cbbd4888a",
-"3": "1800flowers.com",
-"4": "Product page",
-id: 2 },
-{
-"0": "20140101",
-"1": "220710",
-"2": "TEST",
-"3": "1800flowers.com",
-'4': "Product page" ,
-id: 3}];
+0: "20140101",
+1: "222338",
+2: "57fbde4915cdba5fad8997d297b44fd6",
+3: "1800flowers.com",
+4: "Product page",
+5: "Default",
+6: "http://m.ww11.1800flowers.com/product.do?baseCode=91333&dataset=10147&cm_cid=d10147",
+7: "TEST TEST",
+8: "Mobile",
+9: "Fort Myers",
+10: "Florida",
+11: "33908",
+12: "US",
+13: "M",
+14: "55-64",
+15: "CHROME",
+16: "1388615018741",
+17: "REGULAR",
+18: "5eeb",
+id: 0
+}
+]
+
 
 var feed = [];
 //console.log(Object.keys(feedJson[0]).length);
@@ -85,7 +111,7 @@ var feed = [];
       id: "id",
       dataType: tableau.dataTypeEnum.string
     });
-    for (let i = 0; i < Object.keys(feed[0]).length - 1; i++) {
+    for (let i = 0; i < Object.keys(feedJson[0]).length - 1; i++) {
       let obj = {
         id: i.toString(),
         dataType: tableau.dataTypeEnum.string
@@ -98,24 +124,16 @@ var feed = [];
       alias: 'Jumpshot sample-feed',
       columns: cols
     }
-
     schemaCallback([tableSchema]);
   }
 
-myConnector.getData = function(table, doneCallback) {
-     var tableData = feed;
+  myConnector.getData = function(table, doneCallback) {
+     var tableData = feedJson;
      table.appendRows(tableData);
      doneCallback();
   };
 
-
-  //TODO remove
-  myConnector.getFileNames = function() {
-    var fileNames = S3.getS3FileList();
-    console.log(fileNames);
-    return fileNames
-  }
-    tableau.registerConnector(myConnector);
+  tableau.registerConnector(myConnector);
 
 })();
 /*
@@ -130,7 +148,7 @@ const formatData = (data) => {
       obj[j.toString()] = data[i][j]
     }
     dataCollection.push(obj);
-    feed.push(obj);
+    feedJson.push(obj);
   }
   return dataCollection
 }
@@ -164,7 +182,7 @@ $(document).ready(function () {
           console.log('Response Data: ')
           var formattedData = formatData(res.data);
           feedJson = formattedData;
-          //console.log(feedJson);
+          console.log(feedJson);
           console.log(feed);
           tableau.connectionName = "Jumpshot Dynamic-Feed";
           tableau.submit();
