@@ -42,7 +42,7 @@ var feedJson = [
 {
 0: "20140101",
 1: "222338",
-2: "57fbde4915cdba5fad8997d297b44fd6",
+2: "57fbde4915 - TEST - 7d297b44fd6",
 3: "1800flowers.com",
 4: "Product page",
 5: "Default",
@@ -185,7 +185,7 @@ $(document).ready(function () {
           console.log(feedJson);
           console.log(feed);
           tableau.connectionData = JSON.stringify(formattedData);
-          tableau.connectionName = "Jumpshot Dynamic-Feed";
+          tableau.connectionName = "Jumpshot Dynamic Feed";
           tableau.submit();
           //const decompressor = new Decompressor(res.data);
           //let unzippedFile = decompressor.decompress();
