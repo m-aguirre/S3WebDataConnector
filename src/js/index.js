@@ -100,6 +100,25 @@ console.log(feedJson);
     //   columns: cols
     // }
 
+    var cols = []
+    for (let i = 0; i < 5; i++) {
+      let obj = {
+        id: i,
+        dataType: tableau.dataTypeEnum.string
+      };
+      cols.push(obj)
+    }
+    cols.push({
+       id: "id",
+       dataType: tableau.dataTypeEnum.string
+     });
+
+    var tableSchema = {
+      id: 'feedPrototype',
+      alias: 'Jumpshot sample-feed',
+      columns: cols
+    }
+
     schemaCallback([tableSchema]);
   }
 
@@ -136,7 +155,6 @@ const formatData = (data) => {
 
 //TODO add catch for when zero elements are checked
 $(document).ready(function () {
-  console.log('v1')
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
       $('.file-info-tile').each(function(index) {
@@ -191,25 +209,25 @@ $(document).ready(function () {
               // }];
 
 
-              var cols = []
-              for (let i = 0; i < 5; i++) {
-                let obj = {
-                  id: i,
-                  dataType: tableau.dataTypeEnum.string
-                };
-                cols.push(obj)
-              }
-              cols.push({
-                 id: "id",
-                 dataType: tableau.dataTypeEnum.string
-               });
-
-              var tableSchema = {
-                id: 'feedPrototype',
-                alias: 'Jumpshot sample-feed',
-                columns: cols
-              }
-              schemaCallback([tableSchema]);
+              // var cols = []
+              // for (let i = 0; i < 5; i++) {
+              //   let obj = {
+              //     id: i,
+              //     dataType: tableau.dataTypeEnum.string
+              //   };
+              //   cols.push(obj)
+              // }
+              // cols.push({
+              //    id: "id",
+              //    dataType: tableau.dataTypeEnum.string
+              //  });
+              //
+              // var tableSchema = {
+              //   id: 'feedPrototype',
+              //   alias: 'Jumpshot sample-feed',
+              //   columns: cols
+              // }
+              // schemaCallback([tableSchema]);
             }
 
           myConnector.getData = function(table, doneCallback) {
@@ -217,14 +235,6 @@ $(document).ready(function () {
                table.appendRows(tableData);
                doneCallback();
             };
-
-
-            //TODO remove
-            myConnector.getFileNames = function() {
-              var fileNames = S3.getS3FileList();
-              console.log(fileNames);
-              return fileNames
-            }
               tableau.registerConnector(myConnector);
           })();
 
