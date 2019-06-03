@@ -38,28 +38,42 @@ id: 2 },
 '4': "Product page" ,
 id: 3}];
 
-// var cols = [ {
-//   id: "0",
-//   dataType: tableau.dataTypeEnum.string
-// },{
-//   id: "1",
-//   dataType: tableau.dataTypeEnum.string
-// }, {
-//   id: "2",
-//   dataType: tableau.dataTypeEnum.string
-// }, {
-//   id: "3",
-//   dataType: tableau.dataTypeEnum.string
-// }, {
-//   id: "4",
-//   dataType: tableau.dataTypeEnum.string
-// }, {
-//   id: "id",
-//   dataType: tableau.dataTypeEnum.string
-// }];
+var cols = [ {
+  id: "0",
+  dataType: tableau.dataTypeEnum.string
+},{
+  id: "1",
+  dataType: tableau.dataTypeEnum.string
+}, {
+  id: "2",
+  dataType: tableau.dataTypeEnum.string
+}, {
+  id: "3",
+  dataType: tableau.dataTypeEnum.string
+}, {
+  id: "4",
+  dataType: tableau.dataTypeEnum.string
+}, {
+  id: "id",
+  dataType: tableau.dataTypeEnum.string
+}];
 console.log('testing ---');
 console.log(feedJson);
-//console.log(cols);
+console.log(cols);
+
+cols = []
+cols.push({
+  id: "id",
+  dataType: tableau.dataTypeEnum.string
+});
+for (let i = 0; i < 5; i++) {
+  let obj = {
+    id: i.toString(),
+    dataType: tableau.dataTypeEnum.string
+  };
+  cols.push(obj)
+}
+console.log(cols)
 
   var myConnector = tableau.makeConnector();
 
@@ -101,17 +115,17 @@ console.log(feedJson);
     // }
 
     var cols = []
+    cols.push({
+      id: "id",
+      dataType: tableau.dataTypeEnum.string
+    });
     for (let i = 0; i < 5; i++) {
       let obj = {
-        id: i,
+        id: i.toString(),
         dataType: tableau.dataTypeEnum.string
       };
       cols.push(obj)
     }
-    cols.push({
-       id: "id",
-       dataType: tableau.dataTypeEnum.string
-     });
 
     var tableSchema = {
       id: 'feedPrototype',
