@@ -75,6 +75,10 @@ for (let i = 0; i < 5; i++) {
 }
 console.log(cols)
 
+
+(function () {
+
+
   var myConnector = tableau.makeConnector();
 
   // var cols = [{
@@ -152,6 +156,7 @@ myConnector.getData = function(table, doneCallback) {
   }
     tableau.registerConnector(myConnector);
 
+})();
 /*
 Formats data retrieved from S3 into JSON data that can be handled by tableau
 @param array of arrays
