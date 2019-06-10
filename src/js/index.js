@@ -137,7 +137,7 @@ $(document).ready(function() {
             let temp = new FileListObject(file);
             let markup = temp.makeFileObject();
             $('#file-selector').append($(markup));
-            $('#file-selector').append($(structureBuilder.buildStructure(file)));
+            //$('#file-selector').append($(structureBuilder.buildStructure(file)));
           }
         });
       }
