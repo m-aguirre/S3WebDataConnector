@@ -4,6 +4,7 @@ require('es6-promise').polyfill();
 
 import S3Connection from '../../S3Retriever/s3.js';
 import Decompressor from './decompressor.js';
+import FileListObject from './fileListObject.js';
 var S3 = require('../../S3Retriever/s3.js');
 var structureBuilder = require('./dataFileStructure.js');
 
@@ -134,6 +135,9 @@ $(document).ready(function() {
         $('.selection-pane').toggle();
         $.each(res.data, function(index, file) {
           if (file.Size > 0) {
+            let temp = new FileListObject(file);
+            let markup = temp.makeFileObject();
+            $('#file-selector').append($(markup));
             $('#file-selector').append($(structureBuilder.buildStructure(file)));
           }
         });
