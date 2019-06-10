@@ -9,8 +9,7 @@ var S3 = require('../../S3Retriever/s3.js');
 var structureBuilder = require('./dataFileStructure.js');
 
 var dataFromS3 = ['empty'];
-var feedJson = []
-var feed = [];
+var feedJson = [];
 
 /*
 Tableau WDC function

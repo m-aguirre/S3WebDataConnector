@@ -2,10 +2,21 @@ ul {
   list-style: none;
 }
 
+.file-selector-header-container {
+  display: flex;
+}
+
 .file-selector-header {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  font-weight: bold;
+  width: 95%;
+}
+
+.checkbox-container {
+  background-color: red;
+  width: 5%;
 }
 
 .file-info-tile {
@@ -19,6 +30,15 @@ ul {
   margin-top: 15px;
   width: 60%;
   display: flex;
+}
+
+.file-list-item {
+  display: flex;
+}
+.file-info-container {
+  display: flex;
+  justify-content: space-around;
+  width: 95%;
 }
 
 .file-info-tile input {

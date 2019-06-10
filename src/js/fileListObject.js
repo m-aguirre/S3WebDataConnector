@@ -13,15 +13,15 @@ class FileListObject {
 
   makeFileObject() {
     const obj = `
-    <div class='file-info-tile'>
-    <input type="checkbox" name="${this.fileKey}"
-    <label for="${this.fileKey}">
-      <div class='row-container'>
+    <div class='file-list-item'>
+    <div class="checkbox-container">
+      <input type="checkbox" name="${this.fileKey}">
+    </div>
+      <div class='file-info-container'>
           <div>${this.name}</div>
           <div>${this.part}</div>
           <div>${this.lastModified}</div>
       </div>
-    </label>
     </div>
     <hr>
     `;
