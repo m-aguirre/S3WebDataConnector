@@ -107,7 +107,7 @@ var creds = {
   secret: ''
 }
 
-//TODO add catch for invalid logins
+
 $(document).ready(function() {
   $(".auth-form").submit(function(e) {
     e.preventDefault();
@@ -121,9 +121,13 @@ $(document).ready(function() {
     }).then(function (res) {
 
       if (res.data.invalidAccessId) {
-        console.log('Invalid Username / Password Combination');
-        $('.invalid-login').toggle();
+        if ($('.invalid-login-indicator').is(':hidden')) {
+          $('.invalid-login-indicator').toggle();
+        }
       } else {
+        if ($('.invalid-login-indicator').is(':visible')) {
+          $('.invalid-login-indicator').toggle();
+        }
         creds.key = user;
         creds.secret = pass;
 
