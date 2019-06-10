@@ -11,6 +11,9 @@ var dataFromS3 = ['empty'];
 var feedJson = []
 var feed = [];
 
+/*
+Tableau WDC function
+*/
 (function () {
   var myConnector = tableau.makeConnector();
 
@@ -87,11 +90,8 @@ $(document).ready(function () {
             pw: creds.secret
           }
         }).then(function (res) {
-          console.log('Response Data: ')
           var formattedData = formatData(res.data);
           feedJson = formattedData;
-          console.log(feedJson);
-          console.log(feed);
           tableau.connectionData = JSON.stringify(formattedData);
           tableau.connectionName = "Jumpshot Dynamic Feed";
           tableau.submit();
