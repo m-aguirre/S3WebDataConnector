@@ -119,15 +119,22 @@ $(document).ready(function() {
         pw: pass
       }
     }).then(function (res) {
-      creds.key = user;
-      creds.secret = pass;
 
-      $('.selection-pane').toggle();
-      $.each(res.data, function(index, file) {
-        if (file.Size > 0) {
-          $('#file-selector').append($(structureBuilder.buildStructure(file)));
+      if (res.data.invalidAccessId) {
+        console.log('Invalid Username / Password Combination');
+        $('.invalid-login').toggle();
+      } else {
+        creds.key = user;
+        creds.secret = pass;
+
+        $('.selection-pane').toggle();
+        $.each(res.data, function(index, file) {
+          if (file.Size > 0) {
+            $('#file-selector').append($(structureBuilder.buildStructure(file)));
           }
         });
+      }
+
     }).catch(function (err) {
       console.log(err)
     });
