@@ -2,6 +2,12 @@ ul {
   list-style: none;
 }
 
+.file-selector-header {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 .file-info-tile {
   background-color: #1C4E55;
   color: white;

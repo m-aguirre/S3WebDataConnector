@@ -16,14 +16,15 @@ class FileListObject {
     <div class='file-info-tile'>
     <input type="checkbox" name="${this.fileKey}"
     <label for="${this.fileKey}">
-      <div>
-          Name: ${this.name}
-          Part: ${this.part}
-          Date: ${this.lastModified}
+      <div class='row-container'>
+          <div>${this.name}</div>
+          <div>${this.part}</div>
+          <div>${this.lastModified}</div>
       </div>
     </label>
     </div>
-    `;  
+    <hr>
+    `;
     return obj;
   }
 
