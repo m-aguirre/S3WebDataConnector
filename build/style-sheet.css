@@ -43,3 +43,14 @@ ul {
 }
 /* green 1C4E55 */
 /* yellow F9D21A */
+
+.invalid-login-indicator {
+  color: red;
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
