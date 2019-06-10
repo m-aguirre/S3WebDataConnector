@@ -2,9 +2,7 @@
 
 class FileListObject {
   constructor(file) {
-    console.log(file);
-    var key = file.Key.split('/');
-
+    let key = file.Key.split('/');
     this.fileKey = file.Key;
     this.name = key[1];
     this.part = key[5].split('-')[1];
