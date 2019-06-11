@@ -3,7 +3,6 @@
 class FileListObject {
   constructor(file) {
     let key = file.Key.split('/');
-    console.log(key);
     this.fileKey = file.Key;
     this.name = key[1];
     this.dateOfFile = key[2] + '-' + key[3] + '-' + key[4];

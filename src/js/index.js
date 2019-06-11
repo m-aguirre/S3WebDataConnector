@@ -78,8 +78,8 @@ $(document).ready(function () {
         })
       });
         /*
-        TODO s3 functionality is not passed to proxy server;
-          move proxy server logic into main repo after deployment
+        TODO s3 functionality is not getting passed to proxy server;
+          move proxy server logic into main repo
         */
         var s3 = new S3Connection(creds.key, creds.secret)
         axios.get('https://jumpshot-proxy.herokuapp.com/getfiles', {
