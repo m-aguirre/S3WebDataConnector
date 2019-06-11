@@ -128,6 +128,9 @@ $(document).ready(function() {
         if ($('.invalid-login-indicator').is(':visible')) {
           $('.invalid-login-indicator').toggle();
         }
+        if ($('.authentication-pane').is(':visible')) {
+          $('.authentication-pane').toggle();
+        }
         creds.key = user;
         creds.secret = pass;
 
