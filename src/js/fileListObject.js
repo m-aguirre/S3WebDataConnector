@@ -6,6 +6,7 @@ class FileListObject {
     console.log(key);
     this.fileKey = file.Key;
     this.name = key[1];
+    this.dateOfFile = key[2] + '-' + key[3] + '-' + key[4];
     this.part = key[5].split('-')[1];
     this.lastModified = file.LastModified.split('T')[0];
   }
@@ -18,6 +19,7 @@ class FileListObject {
     </div>
       <div class='file-info-container'>
           <div class='file-info-element'>${this.name}</div>
+          <div class='file-info-element'>${this.dateOfFile}</div>
           <div class='file-info-element'>${this.part}</div>
           <div class='file-info-element'>${this.lastModified}</div>
       </div>
