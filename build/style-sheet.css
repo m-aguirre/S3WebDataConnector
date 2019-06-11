@@ -4,6 +4,9 @@ ul {
 
 .file-selector-header-container {
   display: flex;
+  padding: 10px;
+  margin-bottom: -10px;
+  background-color: #EFEFEF;
 }
 
 .file-selector-header {
@@ -12,6 +15,10 @@ ul {
   flex-wrap: wrap;
   font-weight: bold;
   width: 95%;
+}
+
+.header-element {
+  width: 30%;
 }
 
 .checkbox-container {
@@ -40,6 +47,10 @@ ul {
   width: 95%;
 }
 
+.file-info-element {
+  width: 30%;
+}
+
 .file-info-tile input {
   margin: auto;
   margin-left: 5%;
@@ -53,10 +64,11 @@ ul {
 .bucket-selection-container {
   background-color: #1C4E55;
   height: 10vh;
-  width: 70%;
+  width: 80%;
   margin: auto;
   font-size: 20;
   color: white;
+  border-radius: 5px;
 }
 .bucket-selection-container label {
   padding: 18;

@@ -3,6 +3,7 @@
 class FileListObject {
   constructor(file) {
     let key = file.Key.split('/');
+    console.log(key);
     this.fileKey = file.Key;
     this.name = key[1];
     this.part = key[5].split('-')[1];
@@ -16,9 +17,9 @@ class FileListObject {
       <input type="checkbox" name="${this.fileKey}">
     </div>
       <div class='file-info-container'>
-          <div>${this.name}</div>
-          <div>${this.part}</div>
-          <div>${this.lastModified}</div>
+          <div class='file-info-element'>${this.name}</div>
+          <div class='file-info-element'>${this.part}</div>
+          <div class='file-info-element'>${this.lastModified}</div>
       </div>
     </div>
     <hr>

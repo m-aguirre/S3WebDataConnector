@@ -73,7 +73,6 @@ $(document).ready(function () {
       $('.file-list-item').each(function(index) {
         $(this).find('input[type=checkbox]').each(function(x) {
           if ($(this).is(':checked')) {
-            console.log($(this).attr('name'))
             fileNameToRequest.push($(this).attr('name'));
           }
         })
@@ -135,10 +134,9 @@ $(document).ready(function() {
         $('.selection-pane').toggle();
         $.each(res.data, function(index, file) {
           if (file.Size > 0) {
-            let temp = new FileListObject(file);
-            let markup = temp.makeFileObject();
+            let markup = new FileListObject(file);
+            markup = markup.makeFileObject();
             $('#file-selector').append($(markup));
-            //$('#file-selector').append($(structureBuilder.buildStructure(file)));
           }
         });
       }
