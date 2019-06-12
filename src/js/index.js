@@ -42,11 +42,12 @@ Tableau WDC function
 
   myConnector.getSchema = function(schemaCallback) {
     var cols = []
+    var tempData = JSON.parse(tableau.connectionData);
     cols.push({
       id: "id",
       dataType: tableau.dataTypeEnum.string
     });
-    for (let i = 0; i < Object.keys(feed[0]).length - 1; i++) {
+    for (let i = 0; i < Object.keys(tempData[0]).length - 1; i++) {
       let obj = {
         id: i.toString(),
         dataType: tableau.dataTypeEnum.string
@@ -63,8 +64,8 @@ Tableau WDC function
   }
 
   myConnector.getData = function(table, doneCallback) {
-     //var tableData = JSON.parse(tableau.connectionData);
-     var tableData = feed;
+     var tableData = JSON.parse(tableau.connectionData);
+     //var tableData = feed;
      table.appendRows(tableData);
      doneCallback();
   };
@@ -116,9 +117,15 @@ $(document).ready(function () {
         }).then(function (res) {
           var formattedData = formatData(res.data);
           feedJson = formattedData;
-          console.log(feed);
+          console.log(formattedData);
+
           tableau.connectionData = JSON.stringify(formattedData);
           tableau.connectionName = "Jumpshot Dynamic Feed";
+
+          // var x = JSON.parse(tableau.connectionData);
+          // console.log(typeof(x));
+          // console.log(x[0]);
+          // console.log(Object.keys(x[0]).length);
           tableau.submit();
         }).catch(function (err) {
           console.log(err)
