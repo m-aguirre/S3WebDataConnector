@@ -71,7 +71,7 @@ const formatData = (data) => {
 $(document).ready(function () {
   var fileNameToRequest = [];
     $("#submitButton").click(function () {
-      $('.file-info-tile').each(function(index) {
+      $('.file-list-item').each(function(index) {
         $(this).find('input[type=checkbox]').each(function(x) {
           if ($(this).is(':checked')) {
             fileNameToRequest.push($(this).attr('name'));
