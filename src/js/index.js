@@ -4,6 +4,7 @@ require('es6-promise').polyfill();
 
 import S3Connection from '../../S3Retriever/s3.js';
 import Decompressor from './decompressor.js';
+import FileListObject from './fileListObject.js';
 var S3 = require('../../S3Retriever/s3.js');
 var structureBuilder = require('./dataFileStructure.js');
 
@@ -106,7 +107,6 @@ var creds = {
   secret: ''
 }
 
-//TODO add catch for invalid logins
 $(document).ready(function() {
   $(".auth-form").submit(function(e) {
     e.preventDefault();
@@ -118,15 +118,30 @@ $(document).ready(function() {
         pw: pass
       }
     }).then(function (res) {
-      creds.key = user;
-      creds.secret = pass;
 
-      $('.selection-pane').toggle();
-      $.each(res.data, function(index, file) {
-        if (file.Size > 0) {
-          $('#file-selector').append($(structureBuilder.buildStructure(file)));
+      if (res.data.invalidAccessId) {
+        if ($('.invalid-login-indicator').is(':hidden')) {
+          $('.invalid-login-indicator').toggle();
+        }
+      } else {
+        if ($('.invalid-login-indicator').is(':visible')) {
+          $('.invalid-login-indicator').toggle();
+        }
+        if ($('.authentication-pane').is(':visible')) {
+          $('.authentication-pane').toggle();
+        }
+        creds.key = user;
+        creds.secret = pass;
+
+        $('.selection-pane').toggle();
+        $.each(res.data, function(index, file) {
+          if (file.Size > 0) {
+            let markup = new FileListObject(file);
+            markup = markup.makeFileObject();
+            $('#file-selector').append($(markup));
           }
         });
+      }
     }).catch(function (err) {
       console.log(err)
     });
