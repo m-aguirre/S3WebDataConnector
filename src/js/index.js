@@ -9,8 +9,31 @@ var structureBuilder = require('./dataFileStructure.js');
 
 var dataFromS3 = ['empty'];
 var feedJson = []
-var feed = [];
+var feed = [
 
+{
+0: "20140101",
+1: "222253",
+2: "57fbde4915cdba5fad8997d297b44fd6",
+3: "1800flowers.com",
+4: "Product page",
+5: "Default",
+6: "http://m.ww11.1800flowers.com/product.do?baseCode=105257&dataset=10147&cm_cid=d10147",
+7: "",
+8: "Mobile",
+9: "Fort Myers",
+10: "Florida",
+11: "33908",
+12: "US",
+13: "M",
+14: "55-64",
+15: "CHROME",
+16: "1388614973917",
+17: "REGULAR",
+18: "5eeb",
+id: 1
+}
+];
 /*
 Tableau WDC function
 */
@@ -23,7 +46,7 @@ Tableau WDC function
       id: "id",
       dataType: tableau.dataTypeEnum.string
     });
-    for (let i = 0; i < Object.keys(feedJson[0]).length - 1; i++) {
+    for (let i = 0; i < Object.keys(feed[0]).length - 1; i++) {
       let obj = {
         id: i.toString(),
         dataType: tableau.dataTypeEnum.string
@@ -40,7 +63,8 @@ Tableau WDC function
   }
 
   myConnector.getData = function(table, doneCallback) {
-     var tableData = JSON.parse(tableau.connectionData);
+     //var tableData = JSON.parse(tableau.connectionData);
+     var tableData = feed;
      table.appendRows(tableData);
      doneCallback();
   };
@@ -92,6 +116,7 @@ $(document).ready(function () {
         }).then(function (res) {
           var formattedData = formatData(res.data);
           feedJson = formattedData;
+          console.log(feed);
           tableau.connectionData = JSON.stringify(formattedData);
           tableau.connectionName = "Jumpshot Dynamic Feed";
           tableau.submit();
