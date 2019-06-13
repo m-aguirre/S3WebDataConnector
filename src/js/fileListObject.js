@@ -6,7 +6,8 @@ class FileListObject {
     this.name = key[1];
     this.dateOfFile = key[2] + '-' + key[3] + '-' + key[4];
     this.part = key[5].split('-')[1];
-    this.lastModified = file.LastModified.split('T')[0];
+    //this.lastModified = file.LastModified.split('T')[0];
+    this.fileSize = file.Size;
   }
 
   makeFileObject() {
@@ -19,7 +20,7 @@ class FileListObject {
           <div class='file-info-element'>${this.name}</div>
           <div class='file-info-element'>${this.dateOfFile}</div>
           <div class='file-info-element'>${this.part}</div>
-          <div class='file-info-element'>${this.lastModified}</div>
+          <div class='file-info-element'>${this.fileSize}</div>
       </div>
     </div>
     <hr>
