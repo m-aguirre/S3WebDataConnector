@@ -6,10 +6,6 @@ import S3Connection from '../../S3Retriever/s3.js';
 import Decompressor from './decompressor.js';
 import FileListObject from './fileListObject.js';
 var S3 = require('../../S3Retriever/s3.js');
-var structureBuilder = require('./dataFileStructure.js');
-
-var dataFromS3 = ['empty'];
-var feedJson = [];
 
 /*
 Tableau WDC function
@@ -62,7 +58,6 @@ const formatData = (data) => {
       obj[j.toString()] = data[i][j]
     }
     dataCollection.push(obj);
-    feedJson.push(obj);
   }
   return dataCollection
 }
