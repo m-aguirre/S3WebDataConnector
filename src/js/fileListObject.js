@@ -5,7 +5,8 @@ class FileListObject {
     this.fileKey = file.Key;
     this.name = key[1];
     this.dateOfFile = key[2] + '-' + key[3] + '-' + key[4];
-    this.part = key[5].split('-')[1];
+    //this.part = key[5].split('-')[1];
+    this.part = 0;
     //this.lastModified = file.LastModified.split('T')[0];
     this.fileSize = file.Size;
   }
